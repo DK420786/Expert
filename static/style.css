@@ -223,4 +223,27 @@ footer {
   .hero {
     min-height: 70vh;
   }
+  .services-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 40px;
+  margin: 25px 0 30px;
+}
+
+.service-item {
+  padding: 12px 16px;
+  border-left: 3px solid currentColor;
+  font-size: 16px;
+}
+
+@media (max-width: 700px) {
+  .services-list {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .service-item {
+    font-size: 15px;
+  }
+}
 }
