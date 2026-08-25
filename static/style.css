@@ -25,7 +25,9 @@ body {
   border-radius: 6px;
   font-weight: bold;
 }
-
+.call-button {
+    margin-top: 15px;
+}
 .call-button:hover {
   opacity: 0.9;
 }
