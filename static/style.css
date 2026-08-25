@@ -268,5 +268,22 @@ form button[type="submit"]:hover {
 form button[type="submit"]:active {
     transform: translateY(0);
 }
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    margin-top: 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
 }
 }
