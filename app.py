@@ -10,7 +10,7 @@ app = Flask(__name__)
 import os
 resend.api_key = os.environ.get("re_7cpoWco7_Gnwp6Hb6JEPGLPDL4QCzgMX3")
 
-CLIENT_EMAIL = os.environ.get("safahomecare@gmail.com")
+CLIENT_EMAIL = os.environ.get("sawahomecare@gmail.com")
 
 
 # =====================================
