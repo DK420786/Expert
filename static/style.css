@@ -245,5 +245,28 @@ footer {
   .service-item {
     font-size: 15px;
   }
+  form button[type="submit"] {
+    width: 100%;
+    padding: 14px 20px;
+    margin-top: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+}
+
+form button[type="submit"]:active {
+    transform: translateY(0);
+}
 }
 }
