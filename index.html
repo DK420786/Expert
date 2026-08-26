@@ -1,1729 +1,1189 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Expert Healthcare | Doctor Appointment & Home Care</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        body {
-            background: #f6f9fc;
-            color: #1f2937;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* ================= HEADER ================= */
-
-        header {
-            background: white;
-            border-bottom: 1px solid #e5e7eb;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar {
-            max-width: 1200px;
-            margin: auto;
-            min-height: 72px;
-            padding: 0 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 26px;
-            font-weight: 800;
-            color: #0b7fab;
-        }
-
-        .logo span {
-            color: #18a36c;
-        }
-
-        nav {
-            display: flex;
-            gap: 28px;
-            align-items: center;
-        }
-
-        nav a {
-            font-size: 15px;
-            font-weight: 600;
-            color: #374151;
-        }
-
-        nav a:hover {
-            color: #0b7fab;
-        }
-
-        .login-btn {
-            background: #0b7fab;
-            color: white;
-            padding: 11px 20px;
-            border-radius: 8px;
-        }
-
-        /* ================= HERO ================= */
-
-        .hero {
-            background: linear-gradient(135deg, #eaf8ff, #effcf7);
-            padding: 70px 20px 80px;
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .hero-content h1 {
-            font-size: 48px;
-            line-height: 1.15;
-            margin-bottom: 20px;
-            color: #12344d;
-        }
-
-        .hero-content h1 span {
-            color: #0b7fab;
-        }
-
-        .hero-content p {
-            font-size: 18px;
-            line-height: 1.7;
-            color: #5b6470;
-            max-width: 600px;
-            margin-bottom: 30px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .primary-btn,
-        .secondary-btn {
-            padding: 14px 23px;
-            border-radius: 9px;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-        .primary-btn {
-            background: #0b7fab;
-            color: white;
-        }
-
-        .secondary-btn {
-            background: white;
-            color: #0b7fab;
-            border: 1px solid #0b7fab;
-        }
-
-        .hero-card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-        }
-
-        .hero-card h3 {
-            margin-bottom: 20px;
-            color: #12344d;
-        }
-
-        .search-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .input-group label {
-            display: block;
-            font-size: 13px;
-            margin-bottom: 6px;
-            color: #6b7280;
-            font-weight: 600;
-        }
-
-        select,
-        input {
-            width: 100%;
-            padding: 13px;
-            border: 1px solid #d8dee6;
-            border-radius: 8px;
-            outline: none;
-            background: white;
-        }
-
-        .search-btn {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            background: #18a36c;
-            color: white;
-            font-weight: 700;
-            cursor: pointer;
-            margin-top: 8px;
-        }
-
-        /* ================= SECTION ================= */
-
-        .section {
-            max-width: 1200px;
-            margin: auto;
-            padding: 70px 20px;
-        }
-
-        .section-heading {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-heading h2 {
-            font-size: 34px;
-            color: #12344d;
-            margin-bottom: 10px;
-        }
-
-        .section-heading p {
-            color: #6b7280;
-        }
-
-        /* ================= SERVICES ================= */
-
-        .services {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            border: 1px solid #e7edf2;
-            transition: 0.25s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-        }
-
-        .service-icon {
-            width: 58px;
-            height: 58px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 13px;
-            background: #eaf8ff;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        .service-card h3 {
-            margin-bottom: 10px;
-            color: #12344d;
-        }
-
-        .service-card p {
-            color: #6b7280;
-            line-height: 1.6;
-            margin-bottom: 18px;
-        }
-
-        .service-link {
-            color: #0b7fab;
-            font-weight: 700;
-        }
-
-        /* ================= DOCTORS ================= */
-
-        .filter-box {
-            background: white;
-            padding: 20px;
-            border-radius: 14px;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr auto;
-            gap: 12px;
-            margin-bottom: 35px;
-            border: 1px solid #e6ebf0;
-        }
-
-        .filter-btn {
-            padding: 13px 20px;
-            border: none;
-            border-radius: 8px;
-            background: #0b7fab;
-            color: white;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .doctor-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .doctor-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid #e5eaf0;
-            transition: 0.25s;
-        }
-
-        .doctor-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-        }
-
-        .doctor-image {
-            width: 100%;
-            height: 230px;
-            object-fit: cover;
-            background: #e9f5fa;
-        }
-
-        .doctor-info {
-            padding: 20px;
-        }
-
-        .doctor-info h3 {
-            color: #12344d;
-            margin-bottom: 7px;
-        }
-
-        .speciality {
-            color: #0b7fab;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .doctor-details {
-            color: #6b7280;
-            font-size: 14px;
-            line-height: 1.8;
-        }
-
-        .doctor-bottom {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #edf0f3;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .fee {
-            font-weight: 800;
-            color: #12344d;
-        }
-
-        .rating {
-            color: #e69b00;
-            font-weight: 700;
-        }
-
-        .card-buttons {
-            display: flex;
-            gap: 8px;
-            margin-top: 15px;
-        }
-
-        .view-btn,
-        .book-btn {
-            flex: 1;
-            padding: 11px 8px;
-            border-radius: 7px;
-            text-align: center;
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .view-btn {
-            border: 1px solid #0b7fab;
-            color: #0b7fab;
-        }
-
-        .book-btn {
-            background: #0b7fab;
-            color: white;
-        }
-
-        /* ================= SURGERY ================= */
-
-        .surgery-box {
-            background: white;
-            border-radius: 18px;
-            padding: 35px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 35px;
-            align-items: center;
-            border: 1px solid #e5eaf0;
-        }
-
-        .surgery-box h2 {
-            font-size: 30px;
-            color: #12344d;
-            margin-bottom: 15px;
-        }
-
-        .surgery-box p {
-            color: #6b7280;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        .surgery-list {
-            list-style: none;
-        }
-
-        .surgery-list li {
-            padding: 9px 0;
-            color: #374151;
-        }
-
-        .surgery-list li::before {
-            content: "✓";
-            color: #18a36c;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        .surgery-image {
-            width: 100%;
-            border-radius: 15px;
-            height: 320px;
-            object-fit: cover;
-        }
-
-        /* ================= HOME CARE ================= */
-
-        .homecare {
-            background: #eefaf5;
-            border-radius: 20px;
-            padding: 45px;
-        }
-
-        .homecare-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-            margin-top: 30px;
-        }
-
-        .homecare-item {
-            background: white;
-            padding: 22px;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .homecare-item .icon {
-            font-size: 30px;
-            margin-bottom: 12px;
-        }
-
-        .homecare-item h4 {
-            color: #12344d;
-            margin-bottom: 7px;
-        }
-
-        .homecare-item p {
-            font-size: 13px;
-            color: #6b7280;
-        }
-
-        /* ================= BOOKING ================= */
-
-        .booking {
-            background: white;
-            border-radius: 18px;
-            padding: 35px;
-            max-width: 800px;
-            margin: auto;
-            border: 1px solid #e4e9ee;
-        }
-
-        .booking h2 {
-            text-align: center;
-            color: #12344d;
-            margin-bottom: 25px;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group.full {
-            grid-column: 1 / -1;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 7px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #374151;
-        }
-
-        textarea {
-            width: 100%;
-            min-height: 100px;
-            resize: vertical;
-            padding: 13px;
-            border: 1px solid #d8dee6;
-            border-radius: 8px;
-            outline: none;
-        }
-
-        .submit-btn {
-            width: 100%;
-            border: none;
-            background: #18a36c;
-            color: white;
-            padding: 14px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        /* ================= FOOTER ================= */
-
-        footer {
-            background: #12344d;
-            color: white;
-            padding: 50px 20px 20px;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-        }
-
-        .footer-logo {
-            font-size: 25px;
-            font-weight: 800;
-            margin-bottom: 15px;
-        }
-
-        .footer-logo span {
-            color: #69d5ad;
-        }
-
-        .footer-about {
-            color: #cbd5df;
-            line-height: 1.7;
-            max-width: 400px;
-        }
-
-        footer h4 {
-            margin-bottom: 15px;
-        }
-
-        footer ul {
-            list-style: none;
-        }
-
-        footer li {
-            margin-bottom: 10px;
-            color: #cbd5df;
-            font-size: 14px;
-        }
-
-        .copyright {
-            max-width: 1200px;
-            margin: 40px auto 0;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.15);
-            text-align: center;
-            color: #cbd5df;
-            font-size: 13px;
-        }
-
-        /* ================= MOBILE ================= */
-
-        @media (max-width: 900px) {
-
-            nav {
-                display: none;
-            }
-
-            .hero-container {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-content h1 {
-                font-size: 38px;
-            }
-
-            .services,
-            .doctor-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .homecare-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .filter-box {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .surgery-box {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            .hero {
-                padding: 45px 15px;
-            }
-
-            .hero-content h1 {
-                font-size: 32px;
-            }
-
-            .hero-content p {
-                font-size: 16px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .search-row {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding: 50px 15px;
-            }
-
-            .section-heading h2 {
-                font-size: 28px;
-            }
-
-            .services,
-            .doctor-grid,
-            .homecare-grid,
-            .form-grid,
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-
-            .filter-box {
-                grid-template-columns: 1fr;
-            }
-
-            .surgery-box {
-                padding: 25px;
-            }
-
-            .homecare {
-                padding: 25px 18px;
-            }
-        }
-    </style>
+    <title>Expert Healthcare</title>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
+    <!-- ================= HEADER ================= -->
 
-<header>
-    <div class="navbar">
+    <header>
 
         <div class="logo">
-            Expert<span>Care</span>
+            <a href="/">ExpertCare</a>
         </div>
 
         <nav>
-            <a href="#home">Home</a>
+            <a href="/">Home</a>
             <a href="#doctors">Doctors</a>
             <a href="#surgery">Surgery</a>
-            <a href="#homecare">Home Care</a>
-            <a href="#booking">Appointment</a>
+            <a href="#home-care">Home Care</a>
+            <a href="#appointment">Appointment</a>
             <a href="#contact">Contact</a>
         </nav>
 
-        <a href="#booking" class="login-btn">Book Now</a>
-
-    </div>
-</header>
-
-
-<!-- ================= HERO ================= -->
-
-<section class="hero" id="home">
-
-    <div class="hero-container">
-
-        <div class="hero-content">
-
-            <h1>
-                Find the Right
-                <span>Doctor</span>
-                Near You
-            </h1>
-
-            <p>
-                Book doctor appointments, find trusted surgeons,
-                and get professional healthcare services at home.
-            </p>
-
-            <div class="hero-buttons">
-                <a href="#doctors" class="primary-btn">
-                    Find a Doctor
-                </a>
-
-                <a href="#homecare" class="secondary-btn">
-                    Home Care
-                </a>
-            </div>
-
+        <div class="header-button">
+            <a href="#appointment">Book Appointment</a>
         </div>
 
+    </header>
 
-        <div class="hero-card">
 
-            <h3>Find Healthcare Services</h3>
+    <!-- ================= HERO SECTION ================= -->
 
-            <div class="search-row">
+    <main>
 
-                <div class="input-group">
-                    <label>Select Area</label>
+        <section id="home">
 
-                    <select id="areaSelect">
-                        <option value="">Choose Area</option>
-                        <option value="shahdara">Shahdara</option>
-                        <option value="laxmi-nagar">Laxmi Nagar</option>
-                        <option value="preet-vihar">Preet Vihar</option>
-                        <option value="vivek-vihar">Vivek Vihar</option>
-                        <option value="dilshad-garden">Dilshad Garden</option>
-                    </select>
-                </div>
+            <div class="hero-content">
 
-                <div class="input-group">
-                    <label>Service</label>
+                <p>Trusted Healthcare Services</p>
 
-                    <select id="serviceSelect">
-                        <option value="">Choose Service</option>
-                        <option value="doctor">Doctor Appointment</option>
-                        <option value="surgery">Surgery</option>
-                        <option value="homecare">Home Care</option>
-                    </select>
-                </div>
-
-            </div>
-
-            <div class="input-group">
-                <label>Speciality</label>
-
-                <select id="specialitySelect">
-                    <option value="">All Specialities</option>
-                    <option value="general">General Physician</option>
-                    <option value="orthopedic">Orthopedic</option>
-                    <option value="gynecologist">Gynecologist</option>
-                    <option value="dermatologist">Dermatologist</option>
-                    <option value="cardiologist">Cardiologist</option>
-                </select>
-            </div>
-
-            <button class="search-btn" onclick="searchDoctors()">
-                Search Healthcare
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= SERVICES ================= -->
-
-<section class="section">
-
-    <div class="section-heading">
-
-        <h2>Our Healthcare Services</h2>
-
-        <p>
-            Complete healthcare support for you and your family
-        </p>
-
-    </div>
-
-
-    <div class="services">
-
-        <div class="service-card">
-
-            <div class="service-icon">🩺</div>
-
-            <h3>Doctor Appointment</h3>
-
-            <p>
-                Find doctors by area and speciality and book
-                an appointment according to your convenient time.
-            </p>
-
-            <a href="#doctors" class="service-link">
-                Find Doctors →
-            </a>
-
-        </div>
-
-
-        <div class="service-card">
-
-            <div class="service-icon">🏥</div>
-
-            <h3>Surgery</h3>
-
-            <p>
-                Find experienced surgeons and hospitals for
-                different types of surgical consultations.
-            </p>
-
-            <a href="#surgery" class="service-link">
-                Explore Surgery →
-            </a>
-
-        </div>
-
-
-        <div class="service-card">
-
-            <div class="service-icon">🏠</div>
-
-            <h3>Home Care</h3>
-
-            <p>
-                Get professional nursing and patient-care
-                services at your home.
-            </p>
-
-            <a href="#homecare" class="service-link">
-                Explore Home Care →
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= DOCTORS ================= -->
-
-<section class="section" id="doctors">
-
-    <div class="section-heading">
-
-        <h2>Find Doctors Near You</h2>
-
-        <p>
-            Search doctors by area and speciality
-        </p>
-
-    </div>
-
-
-    <div class="filter-box">
-
-        <select id="doctorArea">
-            <option value="">All Areas</option>
-            <option value="shahdara">Shahdara</option>
-            <option value="laxmi-nagar">Laxmi Nagar</option>
-            <option value="preet-vihar">Preet Vihar</option>
-            <option value="vivek-vihar">Vivek Vihar</option>
-        </select>
-
-
-        <select id="doctorSpeciality">
-            <option value="">All Specialities</option>
-            <option value="general">General Physician</option>
-            <option value="orthopedic">Orthopedic</option>
-            <option value="gynecologist">Gynecologist</option>
-            <option value="dermatologist">Dermatologist</option>
-        </select>
-
-
-        <input
-            type="text"
-            id="doctorSearch"
-            placeholder="Search doctor name..."
-        >
-
-
-        <button class="filter-btn" onclick="filterDoctors()">
-            Search
-        </button>
-
-    </div>
-
-
-    <div class="doctor-grid" id="doctorGrid">
-
-
-        <!-- DOCTOR 1 -->
-
-        <div
-            class="doctor-card"
-            data-area="shahdara"
-            data-speciality="general"
-            data-name="Rahul Sharma"
-        >
-
-            <img
-                class="doctor-image"
-                src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80"
-                alt="Doctor"
-            >
-
-            <div class="doctor-info">
-
-                <h3>Dr. Rahul Sharma</h3>
-
-                <div class="speciality">
-                    General Physician
-                </div>
-
-                <div class="doctor-details">
-                    MBBS, MD<br>
-                    12 Years Experience<br>
-                    📍 Shahdara
-                </div>
-
-                <div class="doctor-bottom">
-
-                    <span class="fee">
-                        ₹500 Consultation
-                    </span>
-
-                    <span class="rating">
-                        ★ 4.8
-                    </span>
-
-                </div>
-
-                <div class="card-buttons">
-
-                    <a href="#" class="view-btn">
-                        View Profile
-                    </a>
-
-                    <a href="#booking" class="book-btn">
-                        Book
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- DOCTOR 2 -->
-
-        <div
-            class="doctor-card"
-            data-area="laxmi-nagar"
-            data-speciality="orthopedic"
-            data-name="Amit Verma"
-        >
-
-            <img
-                class="doctor-image"
-                src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80"
-                alt="Doctor"
-            >
-
-            <div class="doctor-info">
-
-                <h3>Dr. Amit Verma</h3>
-
-                <div class="speciality">
-                    Orthopedic
-                </div>
-
-                <div class="doctor-details">
-                    MBBS, MS Orthopedics<br>
-                    10 Years Experience<br>
-                    📍 Laxmi Nagar
-                </div>
-
-                <div class="doctor-bottom">
-
-                    <span class="fee">
-                        ₹700 Consultation
-                    </span>
-
-                    <span class="rating">
-                        ★ 4.7
-                    </span>
-
-                </div>
-
-                <div class="card-buttons">
-
-                    <a href="#" class="view-btn">
-                        View Profile
-                    </a>
-
-                    <a href="#booking" class="book-btn">
-                        Book
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- DOCTOR 3 -->
-
-        <div
-            class="doctor-card"
-            data-area="preet-vihar"
-            data-speciality="gynecologist"
-            data-name="Neha Gupta"
-        >
-
-            <img
-                class="doctor-image"
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80"
-                alt="Doctor"
-            >
-
-            <div class="doctor-info">
-
-                <h3>Dr. Neha Gupta</h3>
-
-                <div class="speciality">
-                    Gynecologist
-                </div>
-
-                <div class="doctor-details">
-                    MBBS, MD<br>
-                    9 Years Experience<br>
-                    📍 Preet Vihar
-                </div>
-
-                <div class="doctor-bottom">
-
-                    <span class="fee">
-                        ₹600 Consultation
-                    </span>
-
-                    <span class="rating">
-                        ★ 4.9
-                    </span>
-
-                </div>
-
-                <div class="card-buttons">
-
-                    <a href="#" class="view-btn">
-                        View Profile
-                    </a>
-
-                    <a href="#booking" class="book-btn">
-                        Book
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- DOCTOR 4 -->
-
-        <div
-            class="doctor-card"
-            data-area="vivek-vihar"
-            data-speciality="dermatologist"
-            data-name="Pooja Mehta"
-        >
-
-            <img
-                class="doctor-image"
-                src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&q=80"
-                alt="Doctor"
-            >
-
-            <div class="doctor-info">
-
-                <h3>Dr. Pooja Mehta</h3>
-
-                <div class="speciality">
-                    Dermatologist
-                </div>
-
-                <div class="doctor-details">
-                    MBBS, MD Dermatology<br>
-                    8 Years Experience<br>
-                    📍 Vivek Vihar
-                </div>
-
-                <div class="doctor-bottom">
-
-                    <span class="fee">
-                        ₹650 Consultation
-                    </span>
-
-                    <span class="rating">
-                        ★ 4.8
-                    </span>
-
-                </div>
-
-                <div class="card-buttons">
-
-                    <a href="#" class="view-btn">
-                        View Profile
-                    </a>
-
-                    <a href="#booking" class="book-btn">
-                        Book
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- DOCTOR 5 -->
-
-        <div
-            class="doctor-card"
-            data-area="shahdara"
-            data-speciality="orthopedic"
-            data-name="Sanjay Kumar"
-        >
-
-            <img
-                class="doctor-image"
-                src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=600&q=80"
-                alt="Doctor"
-            >
-
-            <div class="doctor-info">
-
-                <h3>Dr. Sanjay Kumar</h3>
-
-                <div class="speciality">
-                    Orthopedic
-                </div>
-
-                <div class="doctor-details">
-                    MBBS, MS<br>
-                    15 Years Experience<br>
-                    📍 Shahdara
-                </div>
-
-                <div class="doctor-bottom">
-
-                    <span class="fee">
-                        ₹800 Consultation
-                    </span>
-
-                    <span class="rating">
-                        ★ 4.9
-                    </span>
-
-                </div>
-
-                <div class="card-buttons">
-
-                    <a href="#" class="view-btn">
-                        View Profile
-                    </a>
-
-                    <a href="#booking" class="book-btn">
-                        Book
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- DOCTOR 6 -->
-
-        <div
-            class="doctor-card"
-            data-area="laxmi-nagar"
-            data-speciality="general"
-            data-name="Anil Kapoor"
-        >
-
-            <img
-                class="doctor-image"
-                src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=600&q=80"
-                alt="Doctor"
-            >
-
-            <div class="doctor-info">
-
-                <h3>Dr. Anil Kapoor</h3>
-
-                <div class="speciality">
-                    General Physician
-                </div>
-
-                <div class="doctor-details">
-                    MBBS, MD<br>
-                    11 Years Experience<br>
-                    📍 Laxmi Nagar
-                </div>
-
-                <div class="doctor-bottom">
-
-                    <span class="fee">
-                        ₹450 Consultation
-                    </span>
-
-                    <span class="rating">
-                        ★ 4.7
-                    </span>
-
-                </div>
-
-                <div class="card-buttons">
-
-                    <a href="#" class="view-btn">
-                        View Profile
-                    </a>
-
-                    <a href="#booking" class="book-btn">
-                        Book
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= SURGERY ================= -->
-
-<section class="section" id="surgery">
-
-    <div class="surgery-box">
-
-        <div>
-
-            <h2>Surgery & Surgical Consultation</h2>
-
-            <p>
-                Find experienced surgeons and healthcare facilities
-                according to your required surgery and location.
-            </p>
-
-            <ul class="surgery-list">
-
-                <li>General Surgery</li>
-                <li>Orthopedic Surgery</li>
-                <li>Gallbladder Surgery</li>
-                <li>Hernia Surgery</li>
-                <li>Eye Surgery</li>
-                <li>Gynecology Surgery</li>
-
-            </ul>
-
-            <br>
-
-            <a href="#booking" class="primary-btn">
-                Book Surgical Consultation
-            </a>
-
-        </div>
-
-
-        <img
-            class="surgery-image"
-            src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=900&q=80"
-            alt="Healthcare Surgery"
-        >
-
-    </div>
-
-</section>
-
-
-<!-- ================= HOME CARE ================= -->
-
-<section class="section" id="homecare">
-
-    <div class="homecare">
-
-        <div class="section-heading">
-
-            <h2>Professional Home Care</h2>
-
-            <p>
-                Healthcare support delivered to your home
-            </p>
-
-        </div>
-
-
-        <div class="homecare-grid">
-
-            <div class="homecare-item">
-
-                <div class="icon">👩‍⚕️</div>
-
-                <h4>Nurse at Home</h4>
+                <h1>
+                    Find the Right Doctor
+                    Near You
+                </h1>
 
                 <p>
-                    Professional nursing support
+                    Book doctor appointments, find surgical
+                    consultations and get professional healthcare
+                    services at home.
                 </p>
 
-            </div>
+                <div class="hero-buttons">
 
+                    <a href="#doctors">
+                        Find a Doctor
+                    </a>
 
-            <div class="homecare-item">
-
-                <div class="icon">❤️</div>
-
-                <h4>Patient Care</h4>
-
-                <p>
-                    Personal patient assistance
-                </p>
-
-            </div>
-
-
-            <div class="homecare-item">
-
-                <div class="icon">👴</div>
-
-                <h4>Elder Care</h4>
-
-                <p>
-                    Dedicated elderly care
-                </p>
-
-            </div>
-
-
-            <div class="homecare-item">
-
-                <div class="icon">🏠</div>
-
-                <h4>Post Surgery Care</h4>
-
-                <p>
-                    Recovery support at home
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= APPOINTMENT ================= -->
-
-<section class="section" id="booking">
-
-    <div class="booking">
-
-        <h2>Book an Appointment</h2>
-
-        <form onsubmit="submitAppointment(event)">
-
-            <div class="form-grid">
-
-                <div class="form-group">
-
-                    <label>Patient Name</label>
-
-                    <input
-                        type="text"
-                        id="patientName"
-                        placeholder="Enter patient name"
-                        required
-                    >
+                    <a href="#home-care">
+                        Home Care
+                    </a>
 
                 </div>
 
-
-                <div class="form-group">
-
-                    <label>Mobile Number</label>
-
-                    <input
-                        type="tel"
-                        id="phone"
-                        placeholder="Enter mobile number"
-                        required
-                    >
-
-                </div>
+            </div>
 
 
-                <div class="form-group">
+            <!-- ================= SEARCH ================= -->
 
-                    <label>Area</label>
+            <div class="healthcare-search">
 
-                    <select id="bookingArea" required>
+                <h2>Find Healthcare Services</h2>
 
-                        <option value="">
+                <form action="#" method="GET">
+
+                    <div class="form-group">
+
+                        <label for="area">
                             Select Area
-                        </option>
+                        </label>
 
-                        <option>Shahdara</option>
-                        <option>Laxmi Nagar</option>
-                        <option>Preet Vihar</option>
-                        <option>Vivek Vihar</option>
+                        <select id="area" name="area">
 
-                    </select>
+                            <option value="">
+                                Choose Area
+                            </option>
 
-                </div>
+                            <option value="shahdara">
+                                Shahdara
+                            </option>
+
+                            <option value="laxmi-nagar">
+                                Laxmi Nagar
+                            </option>
+
+                            <option value="preet-vihar">
+                                Preet Vihar
+                            </option>
+
+                            <option value="vivek-vihar">
+                                Vivek Vihar
+                            </option>
+
+                            <option value="dilshad-garden">
+                                Dilshad Garden
+                            </option>
+
+                        </select>
+
+                    </div>
 
 
-                <div class="form-group">
+                    <div class="form-group">
 
-                    <label>Service</label>
-
-                    <select required>
-
-                        <option value="">
+                        <label for="service">
                             Select Service
-                        </option>
+                        </label>
 
-                        <option>Doctor Appointment</option>
-                        <option>Surgery Consultation</option>
-                        <option>Home Care</option>
+                        <select id="service" name="service">
 
-                    </select>
+                            <option value="">
+                                Choose Service
+                            </option>
+
+                            <option value="doctor">
+                                Doctor Appointment
+                            </option>
+
+                            <option value="surgery">
+                                Surgery
+                            </option>
+
+                            <option value="home-care">
+                                Home Care
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="speciality">
+                            Select Speciality
+                        </label>
+
+                        <select id="speciality" name="speciality">
+
+                            <option value="">
+                                All Specialities
+                            </option>
+
+                            <option value="general-physician">
+                                General Physician
+                            </option>
+
+                            <option value="orthopedic">
+                                Orthopedic
+                            </option>
+
+                            <option value="gynecologist">
+                                Gynecologist
+                            </option>
+
+                            <option value="dermatologist">
+                                Dermatologist
+                            </option>
+
+                            <option value="cardiologist">
+                                Cardiologist
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button type="submit">
+                        Search
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SERVICES ================= -->
+
+        <section id="services">
+
+            <div class="section-heading">
+
+                <p>Our Services</p>
+
+                <h2>
+                    Complete Healthcare Solutions
+                </h2>
+
+                <p>
+                    Choose the healthcare service you need.
+                </p>
+
+            </div>
+
+
+            <div class="service-list">
+
+
+                <!-- Doctor Appointment -->
+
+                <article class="service-card">
+
+                    <div class="service-icon">
+                        🩺
+                    </div>
+
+                    <h3>
+                        Doctor Appointment
+                    </h3>
+
+                    <p>
+                        Find doctors according to your area
+                        and speciality and book an appointment.
+                    </p>
+
+                    <a href="#doctors">
+                        Find Doctors
+                    </a>
+
+                </article>
+
+
+                <!-- Surgery -->
+
+                <article class="service-card">
+
+                    <div class="service-icon">
+                        🏥
+                    </div>
+
+                    <h3>
+                        Surgery
+                    </h3>
+
+                    <p>
+                        Find surgeons and surgical consultation
+                        services according to your requirement.
+                    </p>
+
+                    <a href="#surgery">
+                        Explore Surgery
+                    </a>
+
+                </article>
+
+
+                <!-- Home Care -->
+
+                <article class="service-card">
+
+                    <div class="service-icon">
+                        🏠
+                    </div>
+
+                    <h3>
+                        Home Care
+                    </h3>
+
+                    <p>
+                        Get professional nursing and patient
+                        care services at your home.
+                    </p>
+
+                    <a href="#home-care">
+                        Explore Home Care
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= DOCTORS ================= -->
+
+        <section id="doctors">
+
+            <div class="section-heading">
+
+                <p>Find Healthcare Professionals</p>
+
+                <h2>
+                    Doctors Near You
+                </h2>
+
+                <p>
+                    Search doctors by area and speciality.
+                </p>
+
+            </div>
+
+
+            <!-- Doctor Filters -->
+
+            <div class="doctor-filters">
+
+                <form action="#" method="GET">
+
+                    <div class="form-group">
+
+                        <label for="doctor-area">
+                            Area
+                        </label>
+
+                        <select id="doctor-area" name="area">
+
+                            <option value="">
+                                All Areas
+                            </option>
+
+                            <option value="shahdara">
+                                Shahdara
+                            </option>
+
+                            <option value="laxmi-nagar">
+                                Laxmi Nagar
+                            </option>
+
+                            <option value="preet-vihar">
+                                Preet Vihar
+                            </option>
+
+                            <option value="vivek-vihar">
+                                Vivek Vihar
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="doctor-speciality">
+                            Speciality
+                        </label>
+
+                        <select
+                            id="doctor-speciality"
+                            name="speciality"
+                        >
+
+                            <option value="">
+                                All Specialities
+                            </option>
+
+                            <option value="general-physician">
+                                General Physician
+                            </option>
+
+                            <option value="orthopedic">
+                                Orthopedic
+                            </option>
+
+                            <option value="gynecologist">
+                                Gynecologist
+                            </option>
+
+                            <option value="dermatologist">
+                                Dermatologist
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="doctor-name">
+                            Doctor Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="doctor-name"
+                            name="doctor"
+                            placeholder="Search doctor"
+                        >
+
+                    </div>
+
+
+                    <button type="submit">
+                        Search Doctors
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= DOCTOR CARDS ================= -->
+
+            <div class="doctor-list">
+
+
+                <!-- Doctor 1 -->
+
+                <article class="doctor-card">
+
+                    <div class="doctor-photo">
+
+                        <img
+                            src="{{ url_for('static', filename='images/doctors/doctor1.jpg') }}"
+                            alt="Dr. Rahul Sharma"
+                        >
+
+                    </div>
+
+
+                    <div class="doctor-information">
+
+                        <p class="doctor-speciality">
+                            General Physician
+                        </p>
+
+                        <h3>
+                            Dr. Rahul Sharma
+                        </h3>
+
+                        <p>
+                            MBBS, MD
+                        </p>
+
+                        <p>
+                            12 Years Experience
+                        </p>
+
+                        <p>
+                            📍 Shahdara
+                        </p>
+
+                        <p>
+                            Consultation Fee:
+                            ₹500
+                        </p>
+
+                        <p>
+                            ⭐ 4.8
+                        </p>
+
+
+                        <div class="doctor-actions">
+
+                            <a href="#">
+                                View Profile
+                            </a>
+
+                            <a href="#appointment">
+                                Book Appointment
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Doctor 2 -->
+
+                <article class="doctor-card">
+
+                    <div class="doctor-photo">
+
+                        <img
+                            src="{{ url_for('static', filename='images/doctors/doctor2.jpg') }}"
+                            alt="Dr. Amit Verma"
+                        >
+
+                    </div>
+
+
+                    <div class="doctor-information">
+
+                        <p class="doctor-speciality">
+                            Orthopedic
+                        </p>
+
+                        <h3>
+                            Dr. Amit Verma
+                        </h3>
+
+                        <p>
+                            MBBS, MS Orthopedics
+                        </p>
+
+                        <p>
+                            10 Years Experience
+                        </p>
+
+                        <p>
+                            📍 Laxmi Nagar
+                        </p>
+
+                        <p>
+                            Consultation Fee:
+                            ₹700
+                        </p>
+
+                        <p>
+                            ⭐ 4.7
+                        </p>
+
+
+                        <div class="doctor-actions">
+
+                            <a href="#">
+                                View Profile
+                            </a>
+
+                            <a href="#appointment">
+                                Book Appointment
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Doctor 3 -->
+
+                <article class="doctor-card">
+
+                    <div class="doctor-photo">
+
+                        <img
+                            src="{{ url_for('static', filename='images/doctors/doctor3.jpg') }}"
+                            alt="Dr. Neha Gupta"
+                        >
+
+                    </div>
+
+
+                    <div class="doctor-information">
+
+                        <p class="doctor-speciality">
+                            Gynecologist
+                        </p>
+
+                        <h3>
+                            Dr. Neha Gupta
+                        </h3>
+
+                        <p>
+                            MBBS, MD
+                        </p>
+
+                        <p>
+                            9 Years Experience
+                        </p>
+
+                        <p>
+                            📍 Preet Vihar
+                        </p>
+
+                        <p>
+                            Consultation Fee:
+                            ₹600
+                        </p>
+
+                        <p>
+                            ⭐ 4.9
+                        </p>
+
+
+                        <div class="doctor-actions">
+
+                            <a href="#">
+                                View Profile
+                            </a>
+
+                            <a href="#appointment">
+                                Book Appointment
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Doctor 4 -->
+
+                <article class="doctor-card">
+
+                    <div class="doctor-photo">
+
+                        <img
+                            src="{{ url_for('static', filename='images/doctors/doctor4.jpg') }}"
+                            alt="Dr. Pooja Mehta"
+                        >
+
+                    </div>
+
+
+                    <div class="doctor-information">
+
+                        <p class="doctor-speciality">
+                            Dermatologist
+                        </p>
+
+                        <h3>
+                            Dr. Pooja Mehta
+                        </h3>
+
+                        <p>
+                            MBBS, MD Dermatology
+                        </p>
+
+                        <p>
+                            8 Years Experience
+                        </p>
+
+                        <p>
+                            📍 Vivek Vihar
+                        </p>
+
+                        <p>
+                            Consultation Fee:
+                            ₹650
+                        </p>
+
+                        <p>
+                            ⭐ 4.8
+                        </p>
+
+
+                        <div class="doctor-actions">
+
+                            <a href="#">
+                                View Profile
+                            </a>
+
+                            <a href="#appointment">
+                                Book Appointment
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SURGERY ================= -->
+
+        <section id="surgery">
+
+            <div class="section-heading">
+
+                <p>Surgical Services</p>
+
+                <h2>
+                    Surgery & Surgical Consultation
+                </h2>
+
+                <p>
+                    Find appropriate surgical consultation
+                    according to your requirement.
+                </p>
+
+            </div>
+
+
+            <div class="surgery-content">
+
+                <div class="surgery-information">
+
+                    <h3>
+                        Find Surgical Specialists
+                    </h3>
+
+                    <p>
+                        Connect with experienced surgeons
+                        and healthcare facilities.
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+                            General Surgery
+                        </li>
+
+                        <li>
+                            Orthopedic Surgery
+                        </li>
+
+                        <li>
+                            Hernia Surgery
+                        </li>
+
+                        <li>
+                            Gallbladder Surgery
+                        </li>
+
+                        <li>
+                            Eye Surgery
+                        </li>
+
+                        <li>
+                            Gynecology Surgery
+                        </li>
+
+                    </ul>
+
+
+                    <a href="#appointment">
+                        Book Surgical Consultation
+                    </a>
 
                 </div>
 
 
-                <div class="form-group">
+                <div class="surgery-image">
 
-                    <label>Preferred Date</label>
-
-                    <input
-                        type="date"
-                        required
+                    <img
+                        src="{{ url_for('static', filename='images/surgery.jpg') }}"
+                        alt="Surgical Services"
                     >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>Preferred Time</label>
-
-                    <input
-                        type="time"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group full">
-
-                    <label>
-                        Reason / Message
-                    </label>
-
-                    <textarea
-                        placeholder="Tell us briefly about your requirement"
-                    ></textarea>
 
                 </div>
 
             </div>
 
-
-            <button
-                type="submit"
-                class="submit-btn"
-            >
-                Submit Appointment Request
-            </button>
-
-        </form>
-
-    </div>
-
-</section>
+        </section>
 
 
-<!-- ================= FOOTER ================= -->
+        <!-- ================= HOME CARE ================= -->
 
-<footer id="contact">
+        <section id="home-care">
 
-    <div class="footer-container">
+            <div class="section-heading">
 
-        <div>
+                <p>Healthcare At Home</p>
 
-            <div class="footer-logo">
-                Expert<span>Care</span>
+                <h2>
+                    Professional Home Care Services
+                </h2>
+
+                <p>
+                    Healthcare support available at your home.
+                </p>
+
             </div>
 
-            <p class="footer-about">
-                Your healthcare partner for doctor appointments,
-                surgical consultations and professional home care.
+
+            <div class="home-care-list">
+
+
+                <article class="home-care-card">
+
+                    <div class="home-care-icon">
+                        👩‍⚕️
+                    </div>
+
+                    <h3>
+                        Nurse at Home
+                    </h3>
+
+                    <p>
+                        Professional nursing services
+                        at your home.
+                    </p>
+
+                    <a href="#appointment">
+                        Book Service
+                    </a>
+
+                </article>
+
+
+                <article class="home-care-card">
+
+                    <div class="home-care-icon">
+                        ❤️
+                    </div>
+
+                    <h3>
+                        Patient Care
+                    </h3>
+
+                    <p>
+                        Dedicated support for patients
+                        at home.
+                    </p>
+
+                    <a href="#appointment">
+                        Book Service
+                    </a>
+
+                </article>
+
+
+                <article class="home-care-card">
+
+                    <div class="home-care-icon">
+                        👴
+                    </div>
+
+                    <h3>
+                        Elder Care
+                    </h3>
+
+                    <p>
+                        Professional elderly care
+                        and assistance.
+                    </p>
+
+                    <a href="#appointment">
+                        Book Service
+                    </a>
+
+                </article>
+
+
+                <article class="home-care-card">
+
+                    <div class="home-care-icon">
+                        🏠
+                    </div>
+
+                    <h3>
+                        Post Surgery Care
+                    </h3>
+
+                    <p>
+                        Home support during recovery
+                        after surgery.
+                    </p>
+
+                    <a href="#appointment">
+                        Book Service
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= APPOINTMENT ================= -->
+
+        <section id="appointment">
+
+            <div class="section-heading">
+
+                <p>Book Healthcare Service</p>
+
+                <h2>
+                    Book an Appointment
+                </h2>
+
+                <p>
+                    Fill in your details and submit
+                    your appointment request.
+                </p>
+
+            </div>
+
+
+            <div class="appointment-form">
+
+                <form action="#" method="POST">
+
+
+                    <div class="form-group">
+
+                        <label for="patient-name">
+                            Patient Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="patient-name"
+                            name="patient_name"
+                            placeholder="Enter patient name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Mobile Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter mobile number"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="appointment-area">
+                            Area
+                        </label>
+
+                        <select
+                            id="appointment-area"
+                            name="area"
+                            required
+                        >
+
+                            <option value="">
+                                Select Area
+                            </option>
+
+                            <option value="shahdara">
+                                Shahdara
+                            </option>
+
+                            <option value="laxmi-nagar">
+                                Laxmi Nagar
+                            </option>
+
+                            <option value="preet-vihar">
+                                Preet Vihar
+                            </option>
+
+                            <option value="vivek-vihar">
+                                Vivek Vihar
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="appointment-service">
+                            Service
+                        </label>
+
+                        <select
+                            id="appointment-service"
+                            name="service"
+                            required
+                        >
+
+                            <option value="">
+                                Select Service
+                            </option>
+
+                            <option value="doctor">
+                                Doctor Appointment
+                            </option>
+
+                            <option value="surgery">
+                                Surgery Consultation
+                            </option>
+
+                            <option value="home-care">
+                                Home Care
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="appointment-date">
+                            Preferred Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="appointment-date"
+                            name="date"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="appointment-time">
+                            Preferred Time
+                        </label>
+
+                        <input
+                            type="time"
+                            id="appointment-time"
+                            name="time"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="message">
+                            Message / Requirement
+                        </label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="5"
+                            placeholder="Enter your requirement"
+                        ></textarea>
+
+                    </div>
+
+
+                    <button type="submit">
+                        Submit Appointment
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer id="contact">
+
+        <div class="footer-content">
+
+
+            <div class="footer-about">
+
+                <h2>
+                    ExpertCare
+                </h2>
+
+                <p>
+                    Your healthcare partner for doctor
+                    appointments, surgery consultations
+                    and professional home care.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>
+                    Services
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="#doctors">
+                            Doctor Appointment
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#surgery">
+                            Surgery
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#home-care">
+                            Home Care
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="#home">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#doctors">
+                            Doctors
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#appointment">
+                            Appointment
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="footer-contact">
+
+                <h3>
+                    Contact
+                </h3>
+
+                <p>
+                    📞 +91 XXXXX XXXXX
+                </p>
+
+                <p>
+                    ✉️ support@expertcare.com
+                </p>
+
+                <p>
+                    📍 Delhi, India
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            <p>
+                © 2026 ExpertCare.
+                All Rights Reserved.
             </p>
 
         </div>
 
-
-        <div>
-
-            <h4>Services</h4>
-
-            <ul>
-                <li>Doctor Appointment</li>
-                <li>Surgery</li>
-                <li>Home Care</li>
-                <li>Nursing Care</li>
-            </ul>
-
-        </div>
-
-
-        <div>
-
-            <h4>Quick Links</h4>
-
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#doctors">Doctors</a></li>
-                <li><a href="#surgery">Surgery</a></li>
-                <li><a href="#homecare">Home Care</a></li>
-            </ul>
-
-        </div>
-
-
-        <div>
-
-            <h4>Contact</h4>
-
-            <ul>
-                <li>📞 +91 XXXXX XXXXX</li>
-                <li>✉️ support@expertcare.com</li>
-                <li>📍 Delhi, India</li>
-            </ul>
-
-        </div>
-
-    </div>
-
-
-    <div class="copyright">
-        © 2026 ExpertCare. All Rights Reserved.
-    </div>
-
-</footer>
-
-
-<!-- ================= JAVASCRIPT ================= -->
-
-<script>
-
-    function searchDoctors() {
-
-        const area =
-            document.getElementById("areaSelect").value;
-
-        const service =
-            document.getElementById("serviceSelect").value;
-
-        const speciality =
-            document.getElementById("specialitySelect").value;
-
-
-        if (service === "surgery") {
-
-            document
-                .getElementById("surgery")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
-
-            return;
-        }
-
-
-        if (service === "homecare") {
-
-            document
-                .getElementById("homecare")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
-
-            return;
-        }
-
-
-        document
-            .getElementById("doctors")
-            .scrollIntoView({
-                behavior: "smooth"
-            });
-
-
-        document.getElementById("doctorArea").value = area;
-
-        document.getElementById("doctorSpeciality").value =
-            speciality;
-
-        filterDoctors();
-    }
-
-
-    function filterDoctors() {
-
-        const area =
-            document.getElementById("doctorArea").value;
-
-        const speciality =
-            document.getElementById("doctorSpeciality").value;
-
-        const search =
-            document
-                .getElementById("doctorSearch")
-                .value
-                .toLowerCase();
-
-
-        const doctors =
-            document.querySelectorAll(".doctor-card");
-
-
-        doctors.forEach(function(doctor) {
-
-            const doctorArea =
-                doctor.dataset.area;
-
-            const doctorSpeciality =
-                doctor.dataset.speciality;
-
-            const doctorName =
-                doctor.dataset.name.toLowerCase();
-
-
-            const areaMatch =
-                area === "" ||
-                doctorArea === area;
-
-            const specialityMatch =
-                speciality === "" ||
-                doctorSpeciality === speciality;
-
-            const nameMatch =
-                search === "" ||
-                doctorName.includes(search);
-
-
-            if (
-                areaMatch &&
-                specialityMatch &&
-                nameMatch
-            ) {
-
-                doctor.style.display = "";
-
-            } else {
-
-                doctor.style.display = "none";
-
-            }
-
-        });
-
-    }
-
-
-    function submitAppointment(event) {
-
-        event.preventDefault();
-
-        const name =
-            document.getElementById("patientName").value;
-
-        alert(
-            "Thank you " +
-            name +
-            "! Your appointment request has been received."
-        );
-
-        event.target.reset();
-
-    }
-
-</script>
+    </footer>
 
 </body>
+
 </html>
 ```
