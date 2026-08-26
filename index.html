@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ExpertCare - Doctor Appointment & Home Care</title>
-
-    <meta name="description"
-          content="Find doctors, book appointments, explore surgery services and home healthcare.">
+    <title>ExpertCare - Healthcare Services</title>
 
     <style>
+
         /* =========================
            RESET
         ========================= */
@@ -32,6 +31,7 @@
             background: #f7fafc;
             color: #263746;
             line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
         }
 
         img {
@@ -52,6 +52,7 @@
             max-width: 100%;
         }
 
+
         /* =========================
            HEADER
         ========================= */
@@ -60,6 +61,7 @@
             width: 100%;
             min-height: 70px;
             padding: 0 25px;
+
             background: white;
             border-bottom: 1px solid #e5e7eb;
 
@@ -71,6 +73,8 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+
+            transition: background 0.3s, border 0.3s;
         }
 
         .logo {
@@ -83,13 +87,14 @@
         nav {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 22px;
         }
 
         nav a {
             color: #374151;
             font-size: 14px;
             font-weight: 600;
+            transition: color 0.2s;
         }
 
         nav a:hover {
@@ -99,12 +104,35 @@
         .header-btn {
             background: #0b7fab;
             color: white;
+
             padding: 10px 17px;
             border-radius: 7px;
+
             font-size: 13px;
             font-weight: 700;
             white-space: nowrap;
         }
+
+
+        /* =========================
+           DARK MODE BUTTON
+        ========================= */
+
+        .dark-mode-btn {
+            border: 1px solid #d7dfe6;
+            background: white;
+            color: #374151;
+
+            padding: 9px 13px;
+            border-radius: 7px;
+
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
 
         /* =========================
            COMMON
@@ -125,16 +153,20 @@
 
         .section-title span {
             color: #18a36c;
+
             font-size: 13px;
             font-weight: 700;
+
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .section-title h2 {
             color: #12344d;
+
             font-size: 34px;
             line-height: 1.25;
+
             margin: 7px 0 10px;
         }
 
@@ -142,6 +174,7 @@
             color: #6b7280;
             font-size: 15px;
         }
+
 
         /* =========================
            HERO
@@ -160,28 +193,39 @@
             );
 
             display: grid;
-            grid-template-columns: minmax(0, 1fr) 390px;
+
+            grid-template-columns:
+                minmax(0, 1fr) 390px;
+
             gap: 55px;
+
             align-items: center;
         }
 
         .hero-text span {
             color: #18a36c;
+
             font-size: 14px;
             font-weight: 700;
         }
 
         .hero-text h1 {
             color: #12344d;
+
             font-size: clamp(38px, 5vw, 56px);
+
             line-height: 1.1;
+
             margin: 12px 0 20px;
         }
 
         .hero-text p {
             max-width: 590px;
+
             color: #5f6b76;
+
             font-size: 16px;
+
             margin-bottom: 25px;
         }
 
@@ -193,10 +237,12 @@
 
         .btn {
             display: inline-flex;
+
             justify-content: center;
             align-items: center;
 
             padding: 12px 20px;
+
             border-radius: 7px;
 
             font-size: 14px;
@@ -210,21 +256,29 @@
 
         .btn-secondary {
             border: 1px solid #0b7fab;
+
             color: #0b7fab;
             background: white;
         }
 
+
         /* =========================
-           SEARCH BOX
+           SEARCH
         ========================= */
 
         .search-box {
             width: 100%;
+
             background: white;
+
             padding: 27px;
+
             border-radius: 15px;
+
             border: 1px solid #e1e9ee;
-            box-shadow: 0 15px 40px rgba(18, 52, 77, 0.08);
+
+            box-shadow:
+                0 15px 40px rgba(18, 52, 77, 0.08);
         }
 
         .search-box h3 {
@@ -238,9 +292,12 @@
 
         .form-group label {
             display: block;
+
             color: #374151;
+
             font-size: 13px;
             font-weight: 700;
+
             margin-bottom: 5px;
         }
 
@@ -248,19 +305,26 @@
         select,
         textarea {
             width: 100%;
+
             padding: 11px 12px;
 
             border: 1px solid #d7dfe6;
+
             border-radius: 7px;
+
             outline: none;
+
             background: white;
+            color: #263746;
         }
 
         input:focus,
         select:focus,
         textarea:focus {
             border-color: #0b7fab;
-            box-shadow: 0 0 0 3px rgba(11,127,171,.1);
+
+            box-shadow:
+                0 0 0 3px rgba(11,127,171,.1);
         }
 
         textarea {
@@ -271,16 +335,22 @@
         .search-box button,
         .appointment-form button {
             width: 100%;
+
             border: 0;
+
             padding: 12px;
 
             background: #18a36c;
+
             color: white;
 
             border-radius: 7px;
+
             font-weight: 700;
+
             cursor: pointer;
         }
+
 
         /* =========================
            SERVICES
@@ -288,21 +358,30 @@
 
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
             gap: 20px;
         }
 
         .card {
             background: white;
+
             border: 1px solid #e2e8ed;
+
             border-radius: 14px;
+
             padding: 27px;
+
+            transition: 0.2s;
         }
 
         .card:hover {
-            box-shadow: 0 10px 25px rgba(0,0,0,.06);
+            box-shadow:
+                0 10px 25px rgba(0,0,0,.06);
+
             transform: translateY(-3px);
-            transition: .2s;
         }
 
         .icon {
@@ -310,26 +389,33 @@
             height: 52px;
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
             background: #eaf8ff;
+
             border-radius: 12px;
 
             font-size: 25px;
+
             margin-bottom: 15px;
         }
 
         .card h3 {
             color: #12344d;
+
             font-size: 19px;
+
             margin-bottom: 8px;
         }
 
         .card p {
             color: #6b7280;
+
             font-size: 14px;
         }
+
 
         /* =========================
            DOCTOR FILTER
@@ -337,17 +423,24 @@
 
         .doctor-filter {
             background: white;
+
             border: 1px solid #e2e8ed;
+
             border-radius: 12px;
+
             padding: 18px;
+
             margin-bottom: 30px;
         }
 
         .filter-grid {
             display: grid;
+
             grid-template-columns:
                 1.3fr 1fr 1fr auto;
+
             gap: 12px;
+
             align-items: end;
         }
 
@@ -357,15 +450,22 @@
 
         .filter-grid button {
             height: 43px;
+
             padding: 0 20px;
+
             border: 0;
+
             border-radius: 7px;
 
             background: #0b7fab;
+
             color: white;
+
             font-weight: 700;
+
             cursor: pointer;
         }
+
 
         /* =========================
            DOCTORS
@@ -373,20 +473,37 @@
 
         .doctor-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
             gap: 20px;
         }
 
         .doctor-card {
             background: white;
+
             border: 1px solid #e1e7eb;
+
             border-radius: 14px;
+
             overflow: hidden;
+
+            transition: 0.2s;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,.06);
         }
 
         .doctor-card img {
             width: 100%;
+
             height: 240px;
+
             object-fit: cover;
         }
 
@@ -396,35 +513,48 @@
 
         .doctor-speciality {
             color: #0b7fab;
+
             font-size: 12px;
             font-weight: 700;
         }
 
         .doctor-info h3 {
             color: #12344d;
+
             font-size: 19px;
+
             margin: 3px 0 7px;
         }
 
         .doctor-info p {
             color: #6b7280;
+
             font-size: 13px;
+
             margin-bottom: 3px;
         }
 
         .doctor-actions {
             display: grid;
+
             grid-template-columns: 1fr 1fr;
+
             gap: 8px;
+
             margin-top: 15px;
         }
 
         .doctor-actions button {
             border: 0;
+
             padding: 9px 5px;
+
             border-radius: 6px;
+
             cursor: pointer;
+
             font-size: 12px;
+
             font-weight: 700;
         }
 
@@ -438,31 +568,40 @@
             color: white;
         }
 
+
         /* =========================
            SURGERY
         ========================= */
 
         .surgery-box {
             background: white;
+
             border: 1px solid #e2e8ed;
+
             border-radius: 15px;
 
             padding: 30px;
 
             display: grid;
+
             grid-template-columns: 1fr 1fr;
+
             gap: 40px;
+
             align-items: center;
         }
 
         .surgery-box h3 {
             color: #12344d;
+
             font-size: 26px;
+
             margin-bottom: 10px;
         }
 
         .surgery-box p {
             color: #6b7280;
+
             font-size: 14px;
         }
 
@@ -472,23 +611,34 @@
 
         .surgery-box li {
             color: #374151;
+
             font-size: 14px;
+
             margin: 7px 0;
+
+            list-style: none;
         }
 
         .surgery-box li::before {
             content: "✓";
+
             color: #18a36c;
+
             font-weight: bold;
+
             margin-right: 8px;
         }
 
         .surgery-image {
             width: 100%;
+
             height: 310px;
+
             border-radius: 12px;
+
             object-fit: cover;
         }
+
 
         /* =========================
            HOME CARE
@@ -496,38 +646,54 @@
 
         #home-care {
             background: #eefaf5;
+
             border-radius: 17px;
         }
 
         .care-grid {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
             gap: 15px;
         }
 
         .care-card {
             background: white;
+
             padding: 22px 15px;
+
             text-align: center;
+
             border-radius: 12px;
+
             border: 1px solid #e0ebe6;
         }
 
         .care-card .icon {
-            margin: auto auto 12px;
+            margin:
+                auto
+                auto
+                12px;
+            
             border-radius: 50%;
         }
 
         .care-card h3 {
             color: #12344d;
+
             font-size: 17px;
+
             margin-bottom: 5px;
         }
 
         .care-card p {
             color: #6b7280;
+
             font-size: 13px;
         }
+
 
         /* =========================
            APPOINTMENT
@@ -535,18 +701,24 @@
 
         .appointment-form {
             max-width: 800px;
+
             margin: auto;
 
             background: white;
+
             padding: 30px;
 
             border: 1px solid #e2e8ed;
+
             border-radius: 15px;
         }
 
         .appointment-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+
+            grid-template-columns:
+                1fr 1fr;
+
             gap: 0 17px;
         }
 
@@ -554,14 +726,6 @@
             grid-column: 1 / -1;
         }
 
-        #form-message {
-            display: none;
-            margin-top: 15px;
-            padding: 12px;
-            border-radius: 7px;
-            text-align: center;
-            font-size: 14px;
-        }
 
         /* =========================
            FOOTER
@@ -569,16 +733,22 @@
 
         footer {
             background: #12344d;
+
             color: white;
+
             padding: 45px 20px 18px;
         }
 
         .footer-grid {
             max-width: 1100px;
+
             margin: auto;
 
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.2fr;
+
+            grid-template-columns:
+                2fr 1fr 1fr 1.2fr;
+
             gap: 35px;
         }
 
@@ -589,7 +759,12 @@
         footer p,
         footer a {
             color: #cbd7df;
+
             font-size: 13px;
+        }
+
+        footer ul {
+            list-style: none;
         }
 
         footer li {
@@ -598,11 +773,116 @@
 
         .copyright {
             max-width: 1100px;
+
             margin: 35px auto 0;
+
             padding-top: 15px;
-            border-top: 1px solid rgba(255,255,255,.15);
+
+            border-top:
+                1px solid rgba(255,255,255,.15);
+
             text-align: center;
         }
+
+
+        /* =========================
+           DARK MODE
+        ========================= */
+
+        body.dark-mode {
+            background: #111827;
+            color: #e5e7eb;
+        }
+
+        body.dark-mode header {
+            background: #1f2937;
+            border-color: #374151;
+        }
+
+        body.dark-mode nav a {
+            color: #d1d5db;
+        }
+
+        body.dark-mode nav a:hover {
+            color: #60a5fa;
+        }
+
+        body.dark-mode .dark-mode-btn {
+            background: #374151;
+            color: #f9fafb;
+            border-color: #4b5563;
+        }
+
+        body.dark-mode #home {
+            background: linear-gradient(
+                135deg,
+                #172b3a,
+                #172d27
+            );
+        }
+
+        body.dark-mode .hero-text h1,
+        body.dark-mode .section-title h2,
+        body.dark-mode .card h3,
+        body.dark-mode .doctor-info h3,
+        body.dark-mode .search-box h3,
+        body.dark-mode .surgery-box h3,
+        body.dark-mode .care-card h3,
+        body.dark-mode .form-group label {
+            color: #f3f4f6;
+        }
+
+        body.dark-mode .hero-text p,
+        body.dark-mode .section-title p,
+        body.dark-mode .card p,
+        body.dark-mode .doctor-info p,
+        body.dark-mode .surgery-box p,
+        body.dark-mode .care-card p {
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .search-box,
+        body.dark-mode .card,
+        body.dark-mode .doctor-card,
+        body.dark-mode .doctor-filter,
+        body.dark-mode .surgery-box,
+        body.dark-mode .care-card,
+        body.dark-mode .appointment-form {
+            background: #1f2937;
+
+            border-color: #374151;
+        }
+
+        body.dark-mode input,
+        body.dark-mode select,
+        body.dark-mode textarea {
+            background: #111827;
+
+            color: #f3f4f6;
+
+            border-color: #4b5563;
+        }
+
+        body.dark-mode input::placeholder,
+        body.dark-mode textarea::placeholder {
+            color: #9ca3af;
+        }
+
+        body.dark-mode .btn-secondary {
+            background: #1f2937;
+            color: #60a5fa;
+            border-color: #60a5fa;
+        }
+
+        body.dark-mode .view-btn {
+            background: #24384b;
+            color: #60a5fa;
+        }
+
+        body.dark-mode #home-care {
+            background: #172d27;
+        }
+
 
         /* =========================
            MOBILE
@@ -612,15 +892,20 @@
 
             header {
                 flex-wrap: wrap;
+
                 padding: 13px 17px;
             }
 
             nav {
                 order: 3;
+
                 width: 100%;
+
                 justify-content: center;
+
                 flex-wrap: wrap;
-                gap: 12px 20px;
+
+                gap: 10px 18px;
             }
 
             #home {
@@ -629,15 +914,18 @@
 
             .service-grid,
             .doctor-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
             }
 
             .care-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
             }
 
             .filter-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns:
+                    1fr 1fr;
             }
 
             .surgery-box {
@@ -645,9 +933,11 @@
             }
 
             .footer-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns:
+                    1fr 1fr;
             }
         }
+
 
         @media (max-width: 600px) {
 
@@ -665,18 +955,24 @@
 
             .header-btn {
                 padding: 8px 11px;
+
                 font-size: 11px;
             }
 
             nav {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
                 gap: 5px;
             }
 
             nav a {
                 text-align: center;
+
                 font-size: 12px;
+
                 padding: 6px;
             }
 
@@ -714,10 +1010,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .doctor-actions {
-                grid-template-columns: 1fr 1fr;
-            }
-
             .surgery-box {
                 padding: 21px;
             }
@@ -743,15 +1035,12 @@
             }
         }
 
-        /* No horizontal scroll */
-        html,
-        body {
-            overflow-x: hidden !important;
-        }
     </style>
 </head>
 
+
 <body>
+
 
     <!-- =========================
          HEADER
@@ -763,20 +1052,46 @@
             ExpertCare
         </a>
 
+
         <nav>
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#doctors">Doctors</a>
-            <a href="#surgery">Surgery</a>
-            <a href="#home-care">Home Care</a>
-            <a href="#appointment">Appointment</a>
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#services">
+                Services
+            </a>
+
+            <a href="#doctors">
+                Doctors
+            </a>
+
+            <a href="#surgery">
+                Surgery
+            </a>
+
+            <a href="#home-care">
+                Home Care
+            </a>
+
+            <a href="#appointment">
+                Appointment
+            </a>
+
         </nav>
 
-        <a href="#appointment" class="header-btn">
-            Book Appointment
-        </a>
+
+        <button
+            id="darkModeBtn"
+            class="dark-mode-btn"
+            onclick="toggleDarkMode()"
+        >
+            🌙 Dark Mode
+        </button>
 
     </header>
+
 
 
     <!-- =========================
@@ -785,9 +1100,12 @@
 
     <section id="home">
 
+
         <div class="hero-text">
 
-            <span>Trusted Healthcare Services</span>
+            <span>
+                Trusted Healthcare Services
+            </span>
 
             <h1>
                 Find the right doctor
@@ -796,17 +1114,25 @@
 
             <p>
                 Find experienced doctors in your area,
-                book appointments, explore surgery services
-                and get professional healthcare at home.
+                book appointments, explore surgery
+                services and get professional healthcare
+                at home.
             </p>
+
 
             <div class="hero-buttons">
 
-                <a href="#doctors" class="btn btn-primary">
+                <a
+                    href="#doctors"
+                    class="btn btn-primary"
+                >
                     Find a Doctor
                 </a>
 
-                <a href="#appointment" class="btn btn-secondary">
+                <a
+                    href="#appointment"
+                    class="btn btn-secondary"
+                >
                     Book Appointment
                 </a>
 
@@ -815,15 +1141,21 @@
         </div>
 
 
-        <!-- SEARCH -->
+
+        <!-- SEARCH BOX -->
 
         <div class="search-box">
 
-            <h3>Find a Doctor</h3>
+            <h3>
+                Find a Doctor
+            </h3>
+
 
             <div class="form-group">
 
-                <label>Search Doctor</label>
+                <label>
+                    Search Doctor
+                </label>
 
                 <input
                     type="text"
@@ -833,9 +1165,12 @@
 
             </div>
 
+
             <div class="form-group">
 
-                <label>Area</label>
+                <label>
+                    Area
+                </label>
 
                 <select id="areaFilter">
 
@@ -859,9 +1194,12 @@
 
             </div>
 
+
             <div class="form-group">
 
-                <label>Specialization</label>
+                <label>
+                    Specialization
+                </label>
 
                 <select id="specializationFilter">
 
@@ -897,6 +1235,7 @@
 
             </div>
 
+
             <button onclick="filterDoctors()">
                 Search Doctors
             </button>
@@ -904,6 +1243,7 @@
         </div>
 
     </section>
+
 
 
     <!-- =========================
@@ -914,7 +1254,9 @@
 
         <div class="section-title">
 
-            <span>Our Services</span>
+            <span>
+                Our Services
+            </span>
 
             <h2>
                 Healthcare services for every need
@@ -930,11 +1272,16 @@
 
         <div class="service-grid">
 
+
             <div class="card">
 
-                <div class="icon">🩺</div>
+                <div class="icon">
+                    🩺
+                </div>
 
-                <h3>Doctor Appointment</h3>
+                <h3>
+                    Doctor Appointment
+                </h3>
 
                 <p>
                     Find experienced doctors and
@@ -947,9 +1294,13 @@
 
             <div class="card">
 
-                <div class="icon">🏥</div>
+                <div class="icon">
+                    🏥
+                </div>
 
-                <h3>Surgery Services</h3>
+                <h3>
+                    Surgery Services
+                </h3>
 
                 <p>
                     Explore professional surgical
@@ -962,9 +1313,13 @@
 
             <div class="card">
 
-                <div class="icon">🏠</div>
+                <div class="icon">
+                    🏠
+                </div>
 
-                <h3>Home Care</h3>
+                <h3>
+                    Home Care
+                </h3>
 
                 <p>
                     Get healthcare support and
@@ -978,6 +1333,7 @@
     </section>
 
 
+
     <!-- =========================
          DOCTORS
     ========================== -->
@@ -986,15 +1342,17 @@
 
         <div class="section-title">
 
-            <span>Our Doctors</span>
+            <span>
+                Our Doctors
+            </span>
 
             <h2>
                 Find doctors in your area
             </h2>
 
             <p>
-                Search doctors by name, specialization
-                and location.
+                Search doctors by name,
+                specialization and location.
             </p>
 
         </div>
@@ -1006,9 +1364,12 @@
 
             <div class="filter-grid">
 
+
                 <div class="form-group">
 
-                    <label>Doctor / Search</label>
+                    <label>
+                        Doctor / Search
+                    </label>
 
                     <input
                         type="text"
@@ -1018,9 +1379,12 @@
 
                 </div>
 
+
                 <div class="form-group">
 
-                    <label>Area</label>
+                    <label>
+                        Area
+                    </label>
 
                     <select id="areaFilter2">
 
@@ -1044,9 +1408,12 @@
 
                 </div>
 
+
                 <div class="form-group">
 
-                    <label>Specialization</label>
+                    <label>
+                        Specialization
+                    </label>
 
                     <select id="specializationFilter2">
 
@@ -1082,6 +1449,7 @@
 
                 </div>
 
+
                 <button onclick="filterDoctors()">
                     Search
                 </button>
@@ -1091,12 +1459,16 @@
         </div>
 
 
-        <!-- DOCTOR LIST -->
 
-        <div class="doctor-grid" id="doctorGrid">
+        <!-- DOCTOR GRID -->
+
+        <div
+            class="doctor-grid"
+            id="doctorGrid"
+        >
 
 
-            <!-- Doctor 1 -->
+            <!-- DOCTOR 1 -->
 
             <div
                 class="doctor-card"
@@ -1120,24 +1492,38 @@
                         Dr. Rahul Sharma
                     </h3>
 
-                    <p>📍 Delhi</p>
+                    <p>
+                        📍 Delhi
+                    </p>
 
-                    <p>⭐ 10 Years Experience</p>
+                    <p>
+                        ⭐ 10 Years Experience
+                    </p>
 
-                    <p>🕐 10:00 AM - 2:00 PM</p>
+                    <p>
+                        🕐 10:00 AM - 2:00 PM
+                    </p>
+
 
                     <div class="doctor-actions">
 
                         <button
                             class="view-btn"
-                            onclick="showDoctor('Dr. Rahul Sharma','Cardiologist','Delhi')"
+                            onclick="showDoctor(
+                                'Dr. Rahul Sharma',
+                                'Cardiologist',
+                                'Delhi'
+                            )"
                         >
                             View Profile
                         </button>
 
+
                         <button
                             class="book-btn"
-                            onclick="selectDoctor('Dr. Rahul Sharma')"
+                            onclick="selectDoctor(
+                                'Dr. Rahul Sharma'
+                            )"
                         >
                             Book
                         </button>
@@ -1149,7 +1535,8 @@
             </div>
 
 
-            <!-- Doctor 2 -->
+
+            <!-- DOCTOR 2 -->
 
             <div
                 class="doctor-card"
@@ -1173,24 +1560,38 @@
                         Dr. Priya Verma
                     </h3>
 
-                    <p>📍 Noida</p>
+                    <p>
+                        📍 Noida
+                    </p>
 
-                    <p>⭐ 8 Years Experience</p>
+                    <p>
+                        ⭐ 8 Years Experience
+                    </p>
 
-                    <p>🕐 11:00 AM - 3:00 PM</p>
+                    <p>
+                        🕐 11:00 AM - 3:00 PM
+                    </p>
+
 
                     <div class="doctor-actions">
 
                         <button
                             class="view-btn"
-                            onclick="showDoctor('Dr. Priya Verma','Gynecologist','Noida')"
+                            onclick="showDoctor(
+                                'Dr. Priya Verma',
+                                'Gynecologist',
+                                'Noida'
+                            )"
                         >
                             View Profile
                         </button>
 
+
                         <button
                             class="book-btn"
-                            onclick="selectDoctor('Dr. Priya Verma')"
+                            onclick="selectDoctor(
+                                'Dr. Priya Verma'
+                            )"
                         >
                             Book
                         </button>
@@ -1202,7 +1603,8 @@
             </div>
 
 
-            <!-- Doctor 3 -->
+
+            <!-- DOCTOR 3 -->
 
             <div
                 class="doctor-card"
@@ -1226,24 +1628,38 @@
                         Dr. Amit Kumar
                     </h3>
 
-                    <p>📍 Gurgaon</p>
+                    <p>
+                        📍 Gurgaon
+                    </p>
 
-                    <p>⭐ 12 Years Experience</p>
+                    <p>
+                        ⭐ 12 Years Experience
+                    </p>
 
-                    <p>🕐 9:00 AM - 1:00 PM</p>
+                    <p>
+                        🕐 9:00 AM - 1:00 PM
+                    </p>
+
 
                     <div class="doctor-actions">
 
                         <button
                             class="view-btn"
-                            onclick="showDoctor('Dr. Amit Kumar','Orthopedic','Gurgaon')"
+                            onclick="showDoctor(
+                                'Dr. Amit Kumar',
+                                'Orthopedic',
+                                'Gurgaon'
+                            )"
                         >
                             View Profile
                         </button>
 
+
                         <button
                             class="book-btn"
-                            onclick="selectDoctor('Dr. Amit Kumar')"
+                            onclick="selectDoctor(
+                                'Dr. Amit Kumar'
+                            )"
                         >
                             Book
                         </button>
@@ -1255,7 +1671,8 @@
             </div>
 
 
-            <!-- Doctor 4 -->
+
+            <!-- DOCTOR 4 -->
 
             <div
                 class="doctor-card"
@@ -1279,24 +1696,38 @@
                         Dr. Neha Singh
                     </h3>
 
-                    <p>📍 Delhi</p>
+                    <p>
+                        📍 Delhi
+                    </p>
 
-                    <p>⭐ 7 Years Experience</p>
+                    <p>
+                        ⭐ 7 Years Experience
+                    </p>
 
-                    <p>🕐 2:00 PM - 6:00 PM</p>
+                    <p>
+                        🕐 2:00 PM - 6:00 PM
+                    </p>
+
 
                     <div class="doctor-actions">
 
                         <button
                             class="view-btn"
-                            onclick="showDoctor('Dr. Neha Singh','Dermatologist','Delhi')"
+                            onclick="showDoctor(
+                                'Dr. Neha Singh',
+                                'Dermatologist',
+                                'Delhi'
+                            )"
                         >
                             View Profile
                         </button>
 
+
                         <button
                             class="book-btn"
-                            onclick="selectDoctor('Dr. Neha Singh')"
+                            onclick="selectDoctor(
+                                'Dr. Neha Singh'
+                            )"
                         >
                             Book
                         </button>
@@ -1308,7 +1739,8 @@
             </div>
 
 
-            <!-- Doctor 5 -->
+
+            <!-- DOCTOR 5 -->
 
             <div
                 class="doctor-card"
@@ -1332,24 +1764,38 @@
                         Dr. Arjun Mehta
                     </h3>
 
-                    <p>📍 Noida</p>
+                    <p>
+                        📍 Noida
+                    </p>
 
-                    <p>⭐ 11 Years Experience</p>
+                    <p>
+                        ⭐ 11 Years Experience
+                    </p>
 
-                    <p>🕐 10:00 AM - 4:00 PM</p>
+                    <p>
+                        🕐 10:00 AM - 4:00 PM
+                    </p>
+
 
                     <div class="doctor-actions">
 
                         <button
                             class="view-btn"
-                            onclick="showDoctor('Dr. Arjun Mehta','Neurologist','Noida')"
+                            onclick="showDoctor(
+                                'Dr. Arjun Mehta',
+                                'Neurologist',
+                                'Noida'
+                            )"
                         >
                             View Profile
                         </button>
 
+
                         <button
                             class="book-btn"
-                            onclick="selectDoctor('Dr. Arjun Mehta')"
+                            onclick="selectDoctor(
+                                'Dr. Arjun Mehta'
+                            )"
                         >
                             Book
                         </button>
@@ -1361,7 +1807,8 @@
             </div>
 
 
-            <!-- Doctor 6 -->
+
+            <!-- DOCTOR 6 -->
 
             <div
                 class="doctor-card"
@@ -1385,24 +1832,38 @@
                         Dr. Anjali Gupta
                     </h3>
 
-                    <p>📍 Gurgaon</p>
+                    <p>
+                        📍 Gurgaon
+                    </p>
 
-                    <p>⭐ 9 Years Experience</p>
+                    <p>
+                        ⭐ 9 Years Experience
+                    </p>
 
-                    <p>🕐 9:00 AM - 12:00 PM</p>
+                    <p>
+                        🕐 9:00 AM - 12:00 PM
+                    </p>
+
 
                     <div class="doctor-actions">
 
                         <button
                             class="view-btn"
-                            onclick="showDoctor('Dr. Anjali Gupta','Pediatrician','Gurgaon')"
+                            onclick="showDoctor(
+                                'Dr. Anjali Gupta',
+                                'Pediatrician',
+                                'Gurgaon'
+                            )"
                         >
                             View Profile
                         </button>
 
+
                         <button
                             class="book-btn"
-                            onclick="selectDoctor('Dr. Anjali Gupta')"
+                            onclick="selectDoctor(
+                                'Dr. Anjali Gupta'
+                            )"
                         >
                             Book
                         </button>
@@ -1418,6 +1879,7 @@
     </section>
 
 
+
     <!-- =========================
          SURGERY
     ========================== -->
@@ -1426,7 +1888,9 @@
 
         <div class="section-title">
 
-            <span>Surgery Services</span>
+            <span>
+                Surgery Services
+            </span>
 
             <h2>
                 Professional surgical care
@@ -1442,6 +1906,7 @@
 
         <div class="surgery-box">
 
+
             <div>
 
                 <h3>
@@ -1454,12 +1919,27 @@
                     healthcare requirements.
                 </p>
 
+
                 <ul>
-                    <li>Experienced specialists</li>
-                    <li>Hospital coordination</li>
-                    <li>Pre-surgery consultation</li>
-                    <li>Post-surgery support</li>
+
+                    <li>
+                        Experienced specialists
+                    </li>
+
+                    <li>
+                        Hospital coordination
+                    </li>
+
+                    <li>
+                        Pre-surgery consultation
+                    </li>
+
+                    <li>
+                        Post-surgery support
+                    </li>
+
                 </ul>
+
 
                 <a
                     href="#appointment"
@@ -1482,6 +1962,7 @@
     </section>
 
 
+
     <!-- =========================
          HOME CARE
     ========================== -->
@@ -1490,7 +1971,9 @@
 
         <div class="section-title">
 
-            <span>Home Care</span>
+            <span>
+                Home Care
+            </span>
 
             <h2>
                 Healthcare at your home
@@ -1506,11 +1989,16 @@
 
         <div class="care-grid">
 
+
             <div class="care-card">
 
-                <div class="icon">👩‍⚕️</div>
+                <div class="icon">
+                    👩‍⚕️
+                </div>
 
-                <h3>Nursing Care</h3>
+                <h3>
+                    Nursing Care
+                </h3>
 
                 <p>
                     Professional nursing assistance
@@ -1522,9 +2010,13 @@
 
             <div class="care-card">
 
-                <div class="icon">💊</div>
+                <div class="icon">
+                    💊
+                </div>
 
-                <h3>Medicine Support</h3>
+                <h3>
+                    Medicine Support
+                </h3>
 
                 <p>
                     Help with medication schedules
@@ -1536,9 +2028,13 @@
 
             <div class="care-card">
 
-                <div class="icon">🧑‍🦽</div>
+                <div class="icon">
+                    🧑‍🦽
+                </div>
 
-                <h3>Elder Care</h3>
+                <h3>
+                    Elder Care
+                </h3>
 
                 <p>
                     Support and assistance for
@@ -1550,9 +2046,13 @@
 
             <div class="care-card">
 
-                <div class="icon">🏠</div>
+                <div class="icon">
+                    🏠
+                </div>
 
-                <h3>Home Visit</h3>
+                <h3>
+                    Home Visit
+                </h3>
 
                 <p>
                     Healthcare professionals can
@@ -1566,6 +2066,7 @@
     </section>
 
 
+
     <!-- =========================
          APPOINTMENT
     ========================== -->
@@ -1574,15 +2075,17 @@
 
         <div class="section-title">
 
-            <span>Appointment</span>
+            <span>
+                Appointment
+            </span>
 
             <h2>
                 Book your appointment
             </h2>
 
             <p>
-                Fill the form and our healthcare
-                team can receive your request.
+                Fill the form and submit your
+                appointment request.
             </p>
 
         </div>
@@ -1590,8 +2093,8 @@
 
         <!--
             IMPORTANT:
-            Replace YOUR_FORMSPREE_ID with your
-            actual Formspree form endpoint.
+            Replace YOUR_FORMSPREE_ID with
+            your actual Formspree ID.
         -->
 
         <form
@@ -1600,6 +2103,7 @@
             method="POST"
             id="appointmentForm"
         >
+
 
             <div class="appointment-grid">
 
@@ -1756,12 +2260,10 @@
 
             </div>
 
-
-            <div id="form-message"></div>
-
         </form>
 
     </section>
+
 
 
     <!-- =========================
@@ -1892,52 +2394,156 @@
     </footer>
 
 
+
     <!-- =========================
          JAVASCRIPT
     ========================== -->
 
     <script>
 
-        /* =====================================
+
+        /* =========================
+           DARK MODE
+        ========================= */
+
+        function toggleDarkMode() {
+
+            document.body.classList.toggle(
+                "dark-mode"
+            );
+
+
+            const button =
+                document.getElementById(
+                    "darkModeBtn"
+                );
+
+
+            if (
+                document.body.classList.contains(
+                    "dark-mode"
+                )
+            ) {
+
+                button.innerHTML =
+                    "☀️ Light Mode";
+
+                localStorage.setItem(
+                    "darkMode",
+                    "enabled"
+                );
+
+            } else {
+
+                button.innerHTML =
+                    "🌙 Dark Mode";
+
+                localStorage.setItem(
+                    "darkMode",
+                    "disabled"
+                );
+
+            }
+
+        }
+
+
+        /* =========================
+           REMEMBER DARK MODE
+        ========================= */
+
+        if (
+            localStorage.getItem("darkMode")
+            === "enabled"
+        ) {
+
+            document.body.classList.add(
+                "dark-mode"
+            );
+
+            document.getElementById(
+                "darkModeBtn"
+            ).innerHTML =
+                "☀️ Light Mode";
+
+        }
+
+
+
+        /* =========================
            FILTER DOCTORS
-        ===================================== */
+        ========================= */
 
         function filterDoctors() {
 
+
             const search1 =
-                document.getElementById("searchDoctor").value
-                .toLowerCase()
-                .trim();
+                document
+                    .getElementById(
+                        "searchDoctor"
+                    )
+                    .value
+                    .toLowerCase()
+                    .trim();
+
 
             const search2 =
-                document.getElementById("doctorSearch2").value
-                .toLowerCase()
-                .trim();
+                document
+                    .getElementById(
+                        "doctorSearch2"
+                    )
+                    .value
+                    .toLowerCase()
+                    .trim();
+
 
             const area1 =
-                document.getElementById("areaFilter").value
-                .toLowerCase();
+                document
+                    .getElementById(
+                        "areaFilter"
+                    )
+                    .value
+                    .toLowerCase();
+
 
             const area2 =
-                document.getElementById("areaFilter2").value
-                .toLowerCase();
+                document
+                    .getElementById(
+                        "areaFilter2"
+                    )
+                    .value
+                    .toLowerCase();
+
 
             const specialization1 =
-                document.getElementById("specializationFilter").value
-                .toLowerCase();
+                document
+                    .getElementById(
+                        "specializationFilter"
+                    )
+                    .value
+                    .toLowerCase();
+
 
             const specialization2 =
-                document.getElementById("specializationFilter2").value
-                .toLowerCase();
+                document
+                    .getElementById(
+                        "specializationFilter2"
+                    )
+                    .value
+                    .toLowerCase();
 
 
             const search =
                 search2 || search1;
 
+
             const area =
-                area2 !== "all" ? area2 :
-                area1 !== "all" ? area1 :
-                "all";
+                area2 !== "all"
+                    ? area2
+                    : area1 !== "all"
+                        ? area1
+                        : "all";
+
 
             const specialization =
                 specialization2 !== "all"
@@ -1946,57 +2552,68 @@
 
 
             const doctors =
-                document.querySelectorAll(".doctor-card");
+                document.querySelectorAll(
+                    ".doctor-card"
+                );
 
 
             let found = 0;
 
 
-            doctors.forEach(function(doctor) {
-
-                const name =
-                    doctor.dataset.name;
-
-                const doctorArea =
-                    doctor.dataset.area;
-
-                const doctorSpecialization =
-                    doctor.dataset.specialization;
+            doctors.forEach(
+                function(doctor) {
 
 
-                const searchMatch =
-                    !search ||
-                    name.includes(search) ||
-                    doctorSpecialization.includes(search);
+                    const name =
+                        doctor.dataset.name;
 
 
-                const areaMatch =
-                    area === "all" ||
-                    doctorArea === area;
+                    const doctorArea =
+                        doctor.dataset.area;
 
 
-                const specializationMatch =
-                    specialization === "all" ||
-                    doctorSpecialization === specialization;
+                    const doctorSpecialization =
+                        doctor.dataset.specialization;
 
 
-                if (
-                    searchMatch &&
-                    areaMatch &&
-                    specializationMatch
-                ) {
+                    const searchMatch =
+                        !search ||
+                        name.includes(search) ||
+                        doctorSpecialization
+                            .includes(search);
 
-                    doctor.style.display = "";
 
-                    found++;
+                    const areaMatch =
+                        area === "all" ||
+                        doctorArea === area;
 
-                } else {
 
-                    doctor.style.display = "none";
+                    const specializationMatch =
+                        specialization === "all" ||
+                        doctorSpecialization
+                            === specialization;
+
+
+                    if (
+                        searchMatch &&
+                        areaMatch &&
+                        specializationMatch
+                    ) {
+
+                        doctor.style.display =
+                            "";
+
+                        found++;
+
+                    } else {
+
+                        doctor.style.display =
+                            "none";
+
+                    }
 
                 }
-
-            });
+            );
 
 
             if (found === 0) {
@@ -2007,6 +2624,7 @@
 
             }
 
+
             document
                 .getElementById("doctors")
                 .scrollIntoView({
@@ -2016,20 +2634,27 @@
         }
 
 
-        /* =====================================
+
+        /* =========================
            SELECT DOCTOR
-        ===================================== */
+        ========================= */
 
         function selectDoctor(name) {
 
+
             const select =
-                document.getElementById("doctorSelect");
+                document.getElementById(
+                    "doctorSelect"
+                );
+
 
             select.value = name;
 
 
             document
-                .getElementById("appointment")
+                .getElementById(
+                    "appointment"
+                )
                 .scrollIntoView({
                     behavior: "smooth"
                 });
@@ -2037,15 +2662,17 @@
         }
 
 
-        /* =====================================
-           SHOW DOCTOR
-        ===================================== */
+
+        /* =========================
+           DOCTOR PROFILE
+        ========================= */
 
         function showDoctor(
             name,
             specialization,
             area
         ) {
+
 
             alert(
                 name +
@@ -2058,76 +2685,129 @@
         }
 
 
-        /* =====================================
-           KEEP FILTERS IN SYNC
-        ===================================== */
+
+        /* =========================
+           SYNC SEARCH
+        ========================= */
 
         document
-            .getElementById("areaFilter")
-            .addEventListener("change", function() {
+            .getElementById(
+                "areaFilter"
+            )
+            .addEventListener(
+                "change",
+                function() {
 
-                document
-                    .getElementById("areaFilter2")
-                    .value = this.value;
+                    document
+                        .getElementById(
+                            "areaFilter2"
+                        )
+                        .value =
+                        this.value;
 
-            });
-
-
-        document
-            .getElementById("specializationFilter")
-            .addEventListener("change", function() {
-
-                document
-                    .getElementById("specializationFilter2")
-                    .value = this.value;
-
-            });
+                }
+            );
 
 
         document
-            .getElementById("searchDoctor")
-            .addEventListener("input", function() {
+            .getElementById(
+                "areaFilter2"
+            )
+            .addEventListener(
+                "change",
+                function() {
 
-                document
-                    .getElementById("doctorSearch2")
-                    .value = this.value;
+                    document
+                        .getElementById(
+                            "areaFilter"
+                        )
+                        .value =
+                        this.value;
 
-            });
+                }
+            );
 
 
         document
-            .getElementById("doctorSearch2")
-            .addEventListener("input", function() {
+            .getElementById(
+                "specializationFilter"
+            )
+            .addEventListener(
+                "change",
+                function() {
 
-                document
-                    .getElementById("searchDoctor")
-                    .value = this.value;
+                    document
+                        .getElementById(
+                            "specializationFilter2"
+                        )
+                        .value =
+                        this.value;
 
-            });
+                }
+            );
 
-
-        /* =====================================
-           APPOINTMENT FORM
-        ===================================== */
 
         document
-            .getElementById("appointmentForm")
-            .addEventListener("submit", function(event) {
+            .getElementById(
+                "specializationFilter2"
+            )
+            .addEventListener(
+                "change",
+                function() {
 
-                /*
-                    Formspree ko normal submit allow
-                    kar rahe hain.
+                    document
+                        .getElementById(
+                            "specializationFilter"
+                        )
+                        .value =
+                        this.value;
 
-                    Isliye yahan preventDefault()
-                    nahi lagaya gaya.
-                */
-
-            });
+                }
+            );
 
 
-        /* =====================================
-           DATE MINIMUM = TODAY
-        ===================================== */
+        document
+            .getElementById(
+                "searchDoctor"
+            )
+            .addEventListener(
+                "input",
+                function() {
+
+                    document
+                        .getElementById(
+                            "doctorSearch2"
+                        )
+                        .value =
+                        this.value;
+
+                }
+            );
+
+
+        document
+            .getElementById(
+                "doctorSearch2"
+            )
+            .addEventListener(
+                "input",
+                function() {
+
+                    document
+                        .getElementById(
+                            "searchDoctor"
+                        )
+                        .value =
+                        this.value;
+
+                }
+            );
+
+
+
+        /* =========================
+           DATE
+        ========================= */
 
         const dateInput =
             document.querySelector(
@@ -2142,11 +2822,14 @@
                     .toISOString()
                     .split("T")[0];
 
-            dateInput.min = today;
+
+            dateInput.min =
+                today;
 
         }
 
     </script>
 
 </body>
+
 </html>
