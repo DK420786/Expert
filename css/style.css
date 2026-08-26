@@ -1,1 +1,1430 @@
+```css
+/* =========================================================
+   EXPERTCARE - MAIN STYLESHEET
+   File: static/css/style.css
+   ========================================================= */
+
+
+/* =========================================================
+   1. RESET & GLOBAL
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7fafc;
+    color: #1f2937;
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* =========================================================
+   2. COMMON
+   ========================================================= */
+
+section {
+    width: 100%;
+}
+
+section:not(#home) {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-heading p:first-child {
+    color: #0b7fab;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.section-heading h2 {
+    color: #12344d;
+    font-size: 36px;
+    line-height: 1.25;
+    margin-bottom: 12px;
+}
+
+.section-heading p:last-child {
+    color: #6b7280;
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   3. HEADER
+   ========================================================= */
+
+header {
+    width: 100%;
+    min-height: 72px;
+    padding: 0 20px;
+
+    background: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+
+/* Logo */
+
+.logo a {
+    color: #0b7fab;
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+
+/* Navigation */
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+nav a {
+    color: #374151;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+nav a:hover {
+    color: #0b7fab;
+}
+
+
+/* Header button */
+
+.header-button a {
+    display: inline-block;
+
+    background: #0b7fab;
+    color: #ffffff;
+
+    padding: 11px 20px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: 0.25s ease;
+}
+
+.header-button a:hover {
+    background: #096b8f;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   4. HERO SECTION
+   ========================================================= */
+
+#home {
+    min-height: 620px;
+
+    padding: 75px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eaf8ff 0%,
+            #f0fbf7 100%
+        );
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.1fr)
+        minmax(360px, 0.9fr);
+
+    gap: 60px;
+
+    align-items: center;
+
+    padding-left: max(20px, calc((100% - 1160px) / 2));
+    padding-right: max(20px, calc((100% - 1160px) / 2));
+}
+
+
+/* Hero content */
+
+.hero-content > p:first-child {
+    color: #18a36c;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.hero-content h1 {
+    max-width: 650px;
+
+    color: #12344d;
+
+    font-size: clamp(38px, 5vw, 58px);
+
+    line-height: 1.1;
+
+    letter-spacing: -1.5px;
+
+    margin-bottom: 22px;
+}
+
+.hero-content h1::first-line {
+    color: #12344d;
+}
+
+.hero-content > p:last-of-type {
+    max-width: 620px;
+
+    color: #5f6b76;
+
+    font-size: 18px;
+
+    line-height: 1.75;
+
+    margin-bottom: 30px;
+}
+
+
+/* Hero buttons */
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.hero-buttons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 145px;
+
+    padding: 13px 20px;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    transition: 0.25s ease;
+}
+
+.hero-buttons a:first-child {
+    background: #0b7fab;
+    color: #ffffff;
+}
+
+.hero-buttons a:first-child:hover {
+    background: #096b8f;
+    transform: translateY(-2px);
+}
+
+.hero-buttons a:last-child {
+    background: #ffffff;
+    color: #0b7fab;
+
+    border: 1px solid #0b7fab;
+}
+
+.hero-buttons a:last-child:hover {
+    background: #0b7fab;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   5. HEALTHCARE SEARCH
+   ========================================================= */
+
+.healthcare-search {
+    background: #ffffff;
+
+    padding: 32px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 20px 50px rgba(18, 52, 77, 0.10);
+
+    border: 1px solid #e5edf2;
+}
+
+.healthcare-search h2 {
+    color: #12344d;
+
+    font-size: 23px;
+
+    margin-bottom: 23px;
+}
+
+
+/* =========================================================
+   6. FORM ELEMENTS
+   ========================================================= */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+
+    color: #374151;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    margin-bottom: 7px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    background: #ffffff;
+
+    color: #1f2937;
+
+    border: 1px solid #d7dfe6;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #9ca3af;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #0b7fab;
+
+    box-shadow:
+        0 0 0 3px rgba(11, 127, 171, 0.10);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+
+/* Search form */
+
+.healthcare-search form {
+    display: flex;
+    flex-direction: column;
+}
+
+.healthcare-search button {
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 3px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #18a36c;
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    transition: 0.25s ease;
+}
+
+.healthcare-search button:hover {
+    background: #128758;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   7. SERVICES
+   ========================================================= */
+
+#services {
+    background: #ffffff;
+}
+
+.service-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 25px;
+}
+
+.service-card {
+    background: #ffffff;
+
+    padding: 30px;
+
+    border: 1px solid #e5ebef;
+
+    border-radius: 16px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #cfe5ee;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.07);
+}
+
+
+/* Service icon */
+
+.service-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eaf8ff;
+
+    border-radius: 14px;
+
+    font-size: 28px;
+
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    color: #12344d;
+
+    font-size: 21px;
+
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    color: #6b7280;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    margin-bottom: 18px;
+}
+
+.service-card > a {
+    color: #0b7fab;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+.service-card > a:hover {
+    color: #18a36c;
+}
+
+
+/* =========================================================
+   8. DOCTORS
+   ========================================================= */
+
+#doctor-section {
+    background: #f7fafc;
+}
+
+
+/* Doctor filters */
+
+.doctor-filters {
+    background: #ffffff;
+
+    padding: 22px;
+
+    border: 1px solid #e5ebef;
+
+    border-radius: 14px;
+
+    margin-bottom: 35px;
+}
+
+.doctor-filters form {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr 1fr auto;
+
+    gap: 13px;
+
+    align-items: end;
+}
+
+.doctor-filters .form-group {
+    margin-bottom: 0;
+}
+
+.doctor-filters button {
+    height: 47px;
+
+    padding: 0 22px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #0b7fab;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: 0.25s ease;
+}
+
+.doctor-filters button:hover {
+    background: #096b8f;
+}
+
+
+/* Doctor list */
+
+.doctor-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 25px;
+}
+
+
+/* Doctor card */
+
+.doctor-card {
+    background: #ffffff;
+
+    overflow: hidden;
+
+    border: 1px solid #e3e9ee;
+
+    border-radius: 16px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.doctor-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Doctor photo */
+
+.doctor-photo {
+    width: 100%;
+    height: 260px;
+
+    background: #eaf5fa;
+
+    overflow: hidden;
+}
+
+.doctor-photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.35s ease;
+}
+
+.doctor-card:hover .doctor-photo img {
+    transform: scale(1.04);
+}
+
+
+/* Doctor information */
+
+.doctor-information {
+    padding: 22px;
+}
+
+.doctor-speciality {
+    color: #0b7fab;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+}
+
+.doctor-information h3 {
+    color: #12344d;
+
+    font-size: 21px;
+
+    margin-bottom: 9px;
+}
+
+.doctor-information > p:not(.doctor-speciality) {
+    color: #6b7280;
+
+    font-size: 14px;
+
+    margin-bottom: 4px;
+}
+
+
+/* Doctor actions */
+
+.doctor-actions {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 9px;
+
+    margin-top: 17px;
+
+    padding-top: 17px;
+
+    border-top: 1px solid #edf0f3;
+}
+
+.doctor-actions a {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 8px;
+
+    border-radius: 7px;
+
+    text-align: center;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+.doctor-actions a:first-child {
+    color: #0b7fab;
+
+    border: 1px solid #0b7fab;
+}
+
+.doctor-actions a:first-child:hover {
+    background: #0b7fab;
+    color: #ffffff;
+}
+
+.doctor-actions a:last-child {
+    background: #0b7fab;
+    color: #ffffff;
+}
+
+.doctor-actions a:last-child:hover {
+    background: #096b8f;
+}
+
+
+/* =========================================================
+   9. SURGERY
+   ========================================================= */
+
+#surgery {
+    background: #ffffff;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr);
+
+    gap: 30px;
+}
+
+.surgery-content {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 45px;
+
+    align-items: center;
+
+    background: #ffffff;
+
+    padding: 35px;
+
+    border: 1px solid #e4ebef;
+
+    border-radius: 18px;
+}
+
+
+/* Surgery information */
+
+.surgery-information h3 {
+    color: #12344d;
+
+    font-size: 28px;
+
+    margin-bottom: 12px;
+}
+
+.surgery-information > p {
+    color: #6b7280;
+
+    margin-bottom: 18px;
+
+    line-height: 1.7;
+}
+
+.surgery-information ul {
+    margin-bottom: 25px;
+}
+
+.surgery-information li {
+    position: relative;
+
+    padding: 8px 0 8px 27px;
+
+    color: #374151;
+
+    font-size: 15px;
+}
+
+.surgery-information li::before {
+    content: "✓";
+
+    position: absolute;
+
+    left: 0;
+    top: 8px;
+
+    color: #18a36c;
+
+    font-weight: 800;
+}
+
+
+/* Surgery button */
+
+.surgery-information > a {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #0b7fab;
+    color: #ffffff;
+
+    padding: 13px 20px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: 0.25s ease;
+}
+
+.surgery-information > a:hover {
+    background: #096b8f;
+
+    transform: translateY(-2px);
+}
+
+
+/* Surgery image */
+
+.surgery-image {
+    width: 100%;
+    height: 340px;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    background: #eaf5fa;
+}
+
+.surgery-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   10. HOME CARE
+   ========================================================= */
+
+#home-care {
+    background: #eefaf5;
+
+    border-radius: 20px;
+
+    margin-top: 30px;
+
+    margin-bottom: 30px;
+}
+
+.home-care-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+.home-care-card {
+    background: #ffffff;
+
+    padding: 25px 20px;
+
+    text-align: center;
+
+    border: 1px solid #e2ece7;
+
+    border-radius: 13px;
+
+    transition: 0.25s ease;
+}
+
+.home-care-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.07);
+}
+
+
+/* Home care icon */
+
+.home-care-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 15px;
+
+    border-radius: 50%;
+
+    background: #eaf8f2;
+
+    font-size: 27px;
+}
+
+.home-care-card h3 {
+    color: #12344d;
+
+    font-size: 18px;
+
+    margin-bottom: 8px;
+}
+
+.home-care-card p {
+    color: #6b7280;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin-bottom: 15px;
+}
+
+.home-care-card a {
+    color: #18a36c;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   11. APPOINTMENT
+   ========================================================= */
+
+#appointment {
+    background: #f7fafc;
+}
+
+
+/* Appointment form */
+
+.appointment-form {
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    padding: 35px;
+
+    background: #ffffff;
+
+    border: 1px solid #e4e9ee;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.04);
+}
+
+.appointment-form form {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    column-gap: 18px;
+}
+
+.appointment-form .form-group {
+    margin-bottom: 18px;
+}
+
+
+/*
+   Make Message full width.
+   The message field is the last form group.
+*/
+
+.appointment-form .form-group:last-of-type {
+    grid-column: 1 / -1;
+}
+
+
+/* Appointment submit */
+
+.appointment-form button {
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #18a36c;
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    transition: 0.25s ease;
+}
+
+.appointment-form button:hover {
+    background: #128758;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   12. FOOTER
+   ========================================================= */
+
+footer {
+    background: #12344d;
+
+    color: #ffffff;
+
+    padding: 60px 20px 20px;
+}
+
+.footer-content {
+    max-width: 1160px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr 1.2fr;
+
+    gap: 45px;
+}
+
+
+/* Footer about */
+
+.footer-about h2 {
+    color: #ffffff;
+
+    font-size: 27px;
+
+    margin-bottom: 15px;
+}
+
+.footer-about p {
+    max-width: 400px;
+
+    color: #cbd7df;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* Footer links */
+
+.footer-links h3,
+.footer-contact h3 {
+    color: #ffffff;
+
+    font-size: 16px;
+
+    margin-bottom: 18px;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #cbd7df;
+
+    font-size: 14px;
+
+    transition: 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+
+/* Footer contact */
+
+.footer-contact p {
+    color: #cbd7df;
+
+    font-size: 14px;
+
+    margin-bottom: 10px;
+}
+
+
+/* Copyright */
+
+.copyright {
+    max-width: 1160px;
+
+    margin: 45px auto 0;
+
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+    text-align: center;
+}
+
+.copyright p {
+    color: #b9c8d2;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   13. HOVER / FOCUS
+   ========================================================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid rgba(11, 127, 171, 0.25);
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   14. TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    header {
+        padding: 0 18px;
+    }
+
+    nav {
+        gap: 18px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+
+    #home {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .hero-content {
+        max-width: 750px;
+    }
+
+
+    .service-list {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .doctor-list {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .doctor-filters form {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .doctor-filters button {
+        width: 100%;
+    }
+
+
+    .home-care-list {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .footer-content {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   15. MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    /* Header */
+
+    header {
+        min-height: auto;
+
+        padding: 16px;
+
+        flex-wrap: wrap;
+
+        gap: 14px;
+    }
+
+    .logo a {
+        font-size: 23px;
+    }
+
+    nav {
+        order: 3;
+
+        width: 100%;
+
+        overflow-x: auto;
+
+        justify-content: flex-start;
+
+        padding-bottom: 3px;
+
+        gap: 20px;
+    }
+
+    nav a {
+        white-space: nowrap;
+    }
+
+    .header-button {
+        margin-left: auto;
+    }
+
+
+    /* Hero */
+
+    #home {
+        padding: 45px 16px;
+
+        min-height: auto;
+
+        gap: 35px;
+    }
+
+    .hero-content h1 {
+        font-size: 37px;
+
+        letter-spacing: -1px;
+    }
+
+    .hero-content > p:last-of-type {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        width: 100%;
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+    }
+
+
+    /* Search */
+
+    .healthcare-search {
+        padding: 23px;
+    }
+
+
+    /* Sections */
+
+    section:not(#home) {
+        padding: 60px 16px;
+    }
+
+    .section-heading {
+        margin-bottom: 32px;
+    }
+
+    .section-heading h2 {
+        font-size: 29px;
+    }
+
+
+    /* Services */
+
+    .service-list {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Doctors */
+
+    .doctor-filters {
+        padding: 18px;
+    }
+
+    .doctor-filters form {
+        grid-template-columns: 1fr;
+    }
+
+    .doctor-list {
+        grid-template-columns: 1fr;
+    }
+
+    .doctor-photo {
+        height: 280px;
+    }
+
+
+    /* Surgery */
+
+    .surgery-content {
+        grid-template-columns: 1fr;
+
+        padding: 24px;
+
+        gap: 30px;
+    }
+
+    .surgery-information h3 {
+        font-size: 25px;
+    }
+
+    .surgery-image {
+        height: 270px;
+    }
+
+
+    /* Home care */
+
+    #home-care {
+        border-radius: 15px;
+    }
+
+    .home-care-list {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Appointment */
+
+    .appointment-form {
+        padding: 23px;
+    }
+
+    .appointment-form form {
+        grid-template-columns: 1fr;
+    }
+
+    .appointment-form .form-group:last-of-type {
+        grid-column: auto;
+    }
+
+    .appointment-form button {
+        grid-column: auto;
+    }
+
+
+    /* Footer */
+
+    .footer-content {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+    footer {
+        padding-top: 45px;
+    }
+
+}
+
+
+/* =========================================================
+   16. SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .header-button a {
+        padding: 9px 13px;
+
+        font-size: 12px;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .healthcare-search {
+        padding: 20px;
+    }
+
+    .doctor-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .appointment-form {
+        padding: 18px;
+    }
+
+}
+```
 
