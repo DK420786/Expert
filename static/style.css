@@ -96,7 +96,20 @@ img {
 .btn-outline:hover {
     color: #ffffff;
 }
+.call-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #0b8f87;
+    color: #ffffff;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
 
+.call-btn:hover {
+    background: #076f69;
+    transform: translateY(-2px);
+}
 
 /* ================================
    HEADER
