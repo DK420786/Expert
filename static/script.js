@@ -1,11 +1,73 @@
-document.getElementById("year").textContent = new Date().getFullYear();
+// ================================
+// MOBILE / NAVIGATION
+// ================================
 
-document.getElementById("contactForm").addEventListener("submit", function (event) {
-  event.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
 
-  const name = document.getElementById("name").value.trim();
-  const formMessage = document.getElementById("formMessage");
+    // Smooth scrolling for navigation links
+    const links = document.querySelectorAll('a[href^="#"]');
 
-  formMessage.textContent = `Thanks, ${name}! Your message has been received in HomeCare site.`;
-  this.reset();
+    links.forEach(function (link) {
+
+        link.addEventListener("click", function (event) {
+
+            const targetId = this.getAttribute("href");
+
+            if (targetId === "#") {
+                return;
+            }
+
+            const target = document.querySelector(targetId);
+
+            if (target) {
+                event.preventDefault();
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
+
+        });
+
+    });
+
+
+    // ================================
+    // CONTACT FORM
+    // ================================
+
+    const form = document.querySelector(".contact-form");
+
+    if (form) {
+
+        form.addEventListener("submit", function () {
+
+            const button = form.querySelector("button[type='submit']");
+
+            if (button) {
+                button.textContent = "Sending...";
+                button.disabled = true;
+            }
+
+        });
+
+    }
+
+
+    // ================================
+    // CURRENT YEAR
+    // ================================
+
+    const footerYear = document.querySelector(".footer-bottom p");
+
+    if (footerYear) {
+
+        const currentYear = new Date().getFullYear();
+
+        footerYear.textContent =
+            "© " + currentYear + " Expert Homecare. All rights reserved.";
+
+    }
+
 });
