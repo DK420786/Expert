@@ -4,107 +4,198 @@ app = Flask(__name__)
 
 
 # =========================================================
+# DOCTOR DATA
+# =========================================================
+
+doctors = [
+    {
+        "id": 1,
+        "name": "Dr. Rahul Sharma",
+        "specialization": "Cardiologist",
+        "area": "Delhi",
+        "experience": "10 Years",
+        "timing": "10:00 AM - 2:00 PM",
+        "image": "images/doctors/doctor1.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Dr. Priya Verma",
+        "specialization": "Gynecologist",
+        "area": "Noida",
+        "experience": "8 Years",
+        "timing": "11:00 AM - 3:00 PM",
+        "image": "images/doctors/doctor2.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Dr. Amit Kumar",
+        "specialization": "Orthopedic",
+        "area": "Gurgaon",
+        "experience": "12 Years",
+        "timing": "9:00 AM - 1:00 PM",
+        "image": "images/doctors/doctor3.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Dr. Neha Singh",
+        "specialization": "Dermatologist",
+        "area": "Delhi",
+        "experience": "7 Years",
+        "timing": "2:00 PM - 6:00 PM",
+        "image": "images/doctors/doctor4.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Dr. Arjun Mehta",
+        "specialization": "Neurologist",
+        "area": "Noida",
+        "experience": "11 Years",
+        "timing": "10:00 AM - 4:00 PM",
+        "image": "images/doctors/doctor5.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Dr. Anjali Gupta",
+        "specialization": "Pediatrician",
+        "area": "Gurgaon",
+        "experience": "9 Years",
+        "timing": "9:00 AM - 12:00 PM",
+        "image": "images/doctors/doctor6.jpg"
+    }
+]
+
+
+# =========================================================
 # HOME PAGE
 # =========================================================
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template(
+        "index.html",
+        doctors=doctors
+    )
+
+
+# =========================================================
+# DOCTOR SEARCH / FILTER
+# =========================================================
+
+@app.route("/search-doctors", methods=["GET"])
+def search_doctors():
+
+    area = request.args.get("area", "").strip().lower()
+    specialization = request.args.get(
+        "specialization", ""
+    ).strip().lower()
+    search = request.args.get("search", "").strip().lower()
+
+    filtered_doctors = []
+
+    for doctor in doctors:
+
+        doctor_area = doctor["area"].lower()
+        doctor_specialization = doctor["specialization"].lower()
+        doctor_name = doctor["name"].lower()
+
+        # Area filter
+        if area and area != "all":
+            if area not in doctor_area:
+                continue
+
+        # Specialization filter
+        if specialization and specialization != "all":
+            if specialization not in doctor_specialization:
+                continue
+
+        # Name/search filter
+        if search:
+            if (
+                search not in doctor_name
+                and search not in doctor_area
+                and search not in doctor_specialization
+            ):
+                continue
+
+        filtered_doctors.append(doctor)
+
+    return jsonify(filtered_doctors)
 
 
 # =========================================================
 # APPOINTMENT
 # =========================================================
 
-@app.route("/appointment", methods=["POST"])
-def appointment():
+@app.route("/book-appointment", methods=["POST"])
+def book_appointment():
 
-    patient_name = request.form.get("patient_name", "").strip()
+    name = request.form.get("name", "").strip()
     phone = request.form.get("phone", "").strip()
-    area = request.form.get("area", "").strip()
-    service = request.form.get("service", "").strip()
+    email = request.form.get("email", "").strip()
+    doctor = request.form.get("doctor", "").strip()
     date = request.form.get("date", "").strip()
     time = request.form.get("time", "").strip()
     message = request.form.get("message", "").strip()
 
     # Basic validation
-    if not patient_name:
+    if not name or not phone or not doctor or not date:
         return jsonify({
             "success": False,
-            "message": "Patient name is required."
+            "message": "Please fill all required fields."
         }), 400
-
-    if not phone:
-        return jsonify({
-            "success": False,
-            "message": "Mobile number is required."
-        }), 400
-
-    if len(phone) != 10 or not phone.isdigit():
-        return jsonify({
-            "success": False,
-            "message": "Please enter a valid 10-digit mobile number."
-        }), 400
-
-    if not area:
-        return jsonify({
-            "success": False,
-            "message": "Please select an area."
-        }), 400
-
-    if not service:
-        return jsonify({
-            "success": False,
-            "message": "Please select a service."
-        }), 400
-
-    if not date:
-        return jsonify({
-            "success": False,
-            "message": "Please select a date."
-        }), 400
-
-    if not time:
-        return jsonify({
-            "success": False,
-            "message": "Please select a time."
-        }), 400
-
 
     # -----------------------------------------------------
-    # TEMPORARY
-    # -----------------------------------------------------
-    # Abhi database nahi hai, isliye data terminal mein
-    # print hoga.
-    #
-    # Baad mein yahin SQLite/MySQL database add karenge.
+    # Abhi database nahi laga rahe.
+    # Baad mein appointment ko SQLite database mein save
+    # kar sakte hain.
     # -----------------------------------------------------
 
-    appointment_data = {
-        "patient_name": patient_name,
+    appointment = {
+        "name": name,
         "phone": phone,
-        "area": area,
-        "service": service,
+        "email": email,
+        "doctor": doctor,
         "date": date,
         "time": time,
         "message": message
     }
 
-    print("\n===================================")
+    print("\n========================================")
     print("NEW APPOINTMENT")
-    print("===================================")
-
-    for key, value in appointment_data.items():
-        print(f"{key}: {value}")
-
-    print("===================================\n")
-
+    print("========================================")
+    print("Name       :", appointment["name"])
+    print("Phone      :", appointment["phone"])
+    print("Email      :", appointment["email"])
+    print("Doctor     :", appointment["doctor"])
+    print("Date       :", appointment["date"])
+    print("Time       :", appointment["time"])
+    print("Message    :", appointment["message"])
+    print("========================================\n")
 
     return jsonify({
         "success": True,
-        "message": "Appointment request submitted successfully.",
-        "appointment": appointment_data
+        "message": "Appointment request submitted successfully."
     })
+
+
+# =========================================================
+# DOCTOR DETAILS
+# =========================================================
+
+@app.route("/doctor/<int:doctor_id>")
+def doctor_details(doctor_id):
+
+    doctor = None
+
+    for item in doctors:
+        if item["id"] == doctor_id:
+            doctor = item
+            break
+
+    if doctor is None:
+        return "Doctor not found", 404
+
+    return jsonify(doctor)
 
 
 # =========================================================
@@ -115,28 +206,8 @@ def appointment():
 def health():
     return jsonify({
         "status": "running",
-        "message": "ExpertCare Flask server is working."
+        "message": "ExpertCare Flask application is running."
     })
-
-
-# =========================================================
-# ERROR HANDLERS
-# =========================================================
-
-@app.errorhandler(404)
-def page_not_found(error):
-    return """
-    <h1>404 - Page Not Found</h1>
-    <p>The page you are looking for does not exist.</p>
-    """, 404
-
-
-@app.errorhandler(500)
-def internal_server_error(error):
-    return """
-    <h1>500 - Internal Server Error</h1>
-    <p>Something went wrong on the server.</p>
-    """, 500
 
 
 # =========================================================
