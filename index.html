@@ -1,2835 +1,477 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>ExpertCare - Healthcare Services</title>
-
-    <style>
-
-        /* =========================
-           RESET
-        ========================= */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-
-        body {
-            width: 100%;
-            overflow-x: hidden;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f7fafc;
-            color: #263746;
-            line-height: 1.6;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        button,
-        input,
-        select,
-        textarea {
-            font: inherit;
-            max-width: 100%;
-        }
-
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        header {
-            width: 100%;
-            min-height: 70px;
-            padding: 0 25px;
-
-            background: white;
-            border-bottom: 1px solid #e5e7eb;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-
-            transition: background 0.3s, border 0.3s;
-        }
-
-        .logo {
-            color: #0b7fab;
-            font-size: 25px;
-            font-weight: 800;
-            white-space: nowrap;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 22px;
-        }
-
-        nav a {
-            color: #374151;
-            font-size: 14px;
-            font-weight: 600;
-            transition: color 0.2s;
-        }
-
-        nav a:hover {
-            color: #0b7fab;
-        }
-
-        .header-btn {
-            background: #0b7fab;
-            color: white;
-
-            padding: 10px 17px;
-            border-radius: 7px;
-
-            font-size: 13px;
-            font-weight: 700;
-            white-space: nowrap;
-        }
-
-
-        /* =========================
-           DARK MODE BUTTON
-        ========================= */
-
-        .dark-mode-btn {
-            border: 1px solid #d7dfe6;
-            background: white;
-            color: #374151;
-
-            padding: 9px 13px;
-            border-radius: 7px;
-
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 700;
-
-            white-space: nowrap;
-        }
-
-
-        /* =========================
-           COMMON
-        ========================= */
-
-        section {
-            width: 100%;
-            max-width: 1150px;
-            margin: auto;
-            padding: 70px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 40px;
-        }
-
-        .section-title span {
-            color: #18a36c;
-
-            font-size: 13px;
-            font-weight: 700;
-
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .section-title h2 {
-            color: #12344d;
-
-            font-size: 34px;
-            line-height: 1.25;
-
-            margin: 7px 0 10px;
-        }
-
-        .section-title p {
-            color: #6b7280;
-            font-size: 15px;
-        }
-
-
-        /* =========================
-           HERO
-        ========================= */
-
-        #home {
-            max-width: 1200px;
-            min-height: 580px;
-
-            padding: 65px 30px;
-
-            background: linear-gradient(
-                135deg,
-                #eaf8ff,
-                #f0fbf7
-            );
-
-            display: grid;
-
-            grid-template-columns:
-                minmax(0, 1fr) 390px;
-
-            gap: 55px;
-
-            align-items: center;
-        }
-
-        .hero-text span {
-            color: #18a36c;
-
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .hero-text h1 {
-            color: #12344d;
-
-            font-size: clamp(38px, 5vw, 56px);
-
-            line-height: 1.1;
-
-            margin: 12px 0 20px;
-        }
-
-        .hero-text p {
-            max-width: 590px;
-
-            color: #5f6b76;
-
-            font-size: 16px;
-
-            margin-bottom: 25px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .btn {
-            display: inline-flex;
-
-            justify-content: center;
-            align-items: center;
-
-            padding: 12px 20px;
-
-            border-radius: 7px;
-
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .btn-primary {
-            background: #0b7fab;
-            color: white;
-        }
-
-        .btn-secondary {
-            border: 1px solid #0b7fab;
-
-            color: #0b7fab;
-            background: white;
-        }
-
-
-        /* =========================
-           SEARCH
-        ========================= */
-
-        .search-box {
-            width: 100%;
-
-            background: white;
-
-            padding: 27px;
-
-            border-radius: 15px;
-
-            border: 1px solid #e1e9ee;
-
-            box-shadow:
-                0 15px 40px rgba(18, 52, 77, 0.08);
-        }
-
-        .search-box h3 {
-            color: #12344d;
-            margin-bottom: 18px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-
-            color: #374151;
-
-            font-size: 13px;
-            font-weight: 700;
-
-            margin-bottom: 5px;
-        }
-
-        input,
-        select,
-        textarea {
-            width: 100%;
-
-            padding: 11px 12px;
-
-            border: 1px solid #d7dfe6;
-
-            border-radius: 7px;
-
-            outline: none;
-
-            background: white;
-            color: #263746;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            border-color: #0b7fab;
-
-            box-shadow:
-                0 0 0 3px rgba(11,127,171,.1);
-        }
-
-        textarea {
-            min-height: 110px;
-            resize: vertical;
-        }
-
-        .search-box button,
-        .appointment-form button {
-            width: 100%;
-
-            border: 0;
-
-            padding: 12px;
-
-            background: #18a36c;
-
-            color: white;
-
-            border-radius: 7px;
-
-            font-weight: 700;
-
-            cursor: pointer;
-        }
-
-
-        /* =========================
-           SERVICES
-        ========================= */
-
-        .service-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, minmax(0, 1fr));
-
-            gap: 20px;
-        }
-
-        .card {
-            background: white;
-
-            border: 1px solid #e2e8ed;
-
-            border-radius: 14px;
-
-            padding: 27px;
-
-            transition: 0.2s;
-        }
-
-        .card:hover {
-            box-shadow:
-                0 10px 25px rgba(0,0,0,.06);
-
-            transform: translateY(-3px);
-        }
-
-        .icon {
-            width: 52px;
-            height: 52px;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            background: #eaf8ff;
-
-            border-radius: 12px;
-
-            font-size: 25px;
-
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            color: #12344d;
-
-            font-size: 19px;
-
-            margin-bottom: 8px;
-        }
-
-        .card p {
-            color: #6b7280;
-
-            font-size: 14px;
-        }
-
-
-        /* =========================
-           DOCTOR FILTER
-        ========================= */
-
-        .doctor-filter {
-            background: white;
-
-            border: 1px solid #e2e8ed;
-
-            border-radius: 12px;
-
-            padding: 18px;
-
-            margin-bottom: 30px;
-        }
-
-        .filter-grid {
-            display: grid;
-
-            grid-template-columns:
-                1.3fr 1fr 1fr auto;
-
-            gap: 12px;
-
-            align-items: end;
-        }
-
-        .filter-grid .form-group {
-            margin-bottom: 0;
-        }
-
-        .filter-grid button {
-            height: 43px;
-
-            padding: 0 20px;
-
-            border: 0;
-
-            border-radius: 7px;
-
-            background: #0b7fab;
-
-            color: white;
-
-            font-weight: 700;
-
-            cursor: pointer;
-        }
-
-
-        /* =========================
-           DOCTORS
-        ========================= */
-
-        .doctor-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, minmax(0, 1fr));
-
-            gap: 20px;
-        }
-
-        .doctor-card {
-            background: white;
-
-            border: 1px solid #e1e7eb;
-
-            border-radius: 14px;
-
-            overflow: hidden;
-
-            transition: 0.2s;
-        }
-
-        .doctor-card:hover {
-            transform: translateY(-3px);
-
-            box-shadow:
-                0 10px 25px rgba(0,0,0,.06);
-        }
-
-        .doctor-card img {
-            width: 100%;
-
-            height: 240px;
-
-            object-fit: cover;
-        }
-
-        .doctor-info {
-            padding: 18px;
-        }
-
-        .doctor-speciality {
-            color: #0b7fab;
-
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .doctor-info h3 {
-            color: #12344d;
-
-            font-size: 19px;
-
-            margin: 3px 0 7px;
-        }
-
-        .doctor-info p {
-            color: #6b7280;
-
-            font-size: 13px;
-
-            margin-bottom: 3px;
-        }
-
-        .doctor-actions {
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 8px;
-
-            margin-top: 15px;
-        }
-
-        .doctor-actions button {
-            border: 0;
-
-            padding: 9px 5px;
-
-            border-radius: 6px;
-
-            cursor: pointer;
-
-            font-size: 12px;
-
-            font-weight: 700;
-        }
-
-        .view-btn {
-            background: #eaf8ff;
-            color: #0b7fab;
-        }
-
-        .book-btn {
-            background: #0b7fab;
-            color: white;
-        }
-
-
-        /* =========================
-           SURGERY
-        ========================= */
-
-        .surgery-box {
-            background: white;
-
-            border: 1px solid #e2e8ed;
-
-            border-radius: 15px;
-
-            padding: 30px;
-
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 40px;
-
-            align-items: center;
-        }
-
-        .surgery-box h3 {
-            color: #12344d;
-
-            font-size: 26px;
-
-            margin-bottom: 10px;
-        }
-
-        .surgery-box p {
-            color: #6b7280;
-
-            font-size: 14px;
-        }
-
-        .surgery-box ul {
-            margin: 17px 0;
-        }
-
-        .surgery-box li {
-            color: #374151;
-
-            font-size: 14px;
-
-            margin: 7px 0;
-
-            list-style: none;
-        }
-
-        .surgery-box li::before {
-            content: "✓";
-
-            color: #18a36c;
-
-            font-weight: bold;
-
-            margin-right: 8px;
-        }
-
-        .surgery-image {
-            width: 100%;
-
-            height: 310px;
-
-            border-radius: 12px;
-
-            object-fit: cover;
-        }
-
-
-        /* =========================
-           HOME CARE
-        ========================= */
-
-        #home-care {
-            background: #eefaf5;
-
-            border-radius: 17px;
-        }
-
-        .care-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, minmax(0, 1fr));
-
-            gap: 15px;
-        }
-
-        .care-card {
-            background: white;
-
-            padding: 22px 15px;
-
-            text-align: center;
-
-            border-radius: 12px;
-
-            border: 1px solid #e0ebe6;
-        }
-
-        .care-card .icon {
-            margin:
-                auto
-                auto
-                12px;
-            
-            border-radius: 50%;
-        }
-
-        .care-card h3 {
-            color: #12344d;
-
-            font-size: 17px;
-
-            margin-bottom: 5px;
-        }
-
-        .care-card p {
-            color: #6b7280;
-
-            font-size: 13px;
-        }
-
-
-        /* =========================
-           APPOINTMENT
-        ========================= */
-
-        .appointment-form {
-            max-width: 800px;
-
-            margin: auto;
-
-            background: white;
-
-            padding: 30px;
-
-            border: 1px solid #e2e8ed;
-
-            border-radius: 15px;
-        }
-
-        .appointment-grid {
-            display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
-            gap: 0 17px;
-        }
-
-        .appointment-grid .full {
-            grid-column: 1 / -1;
-        }
-
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            background: #12344d;
-
-            color: white;
-
-            padding: 45px 20px 18px;
-        }
-
-        .footer-grid {
-            max-width: 1100px;
-
-            margin: auto;
-
-            display: grid;
-
-            grid-template-columns:
-                2fr 1fr 1fr 1.2fr;
-
-            gap: 35px;
-        }
-
-        footer h3 {
-            margin-bottom: 12px;
-        }
-
-        footer p,
-        footer a {
-            color: #cbd7df;
-
-            font-size: 13px;
-        }
-
-        footer ul {
-            list-style: none;
-        }
-
-        footer li {
-            margin-bottom: 7px;
-        }
-
-        .copyright {
-            max-width: 1100px;
-
-            margin: 35px auto 0;
-
-            padding-top: 15px;
-
-            border-top:
-                1px solid rgba(255,255,255,.15);
-
-            text-align: center;
-        }
-
-
-        /* =========================
-           DARK MODE
-        ========================= */
-
-        body.dark-mode {
-            background: #111827;
-            color: #e5e7eb;
-        }
-
-        body.dark-mode header {
-            background: #1f2937;
-            border-color: #374151;
-        }
-
-        body.dark-mode nav a {
-            color: #d1d5db;
-        }
-
-        body.dark-mode nav a:hover {
-            color: #60a5fa;
-        }
-
-        body.dark-mode .dark-mode-btn {
-            background: #374151;
-            color: #f9fafb;
-            border-color: #4b5563;
-        }
-
-        body.dark-mode #home {
-            background: linear-gradient(
-                135deg,
-                #172b3a,
-                #172d27
-            );
-        }
-
-        body.dark-mode .hero-text h1,
-        body.dark-mode .section-title h2,
-        body.dark-mode .card h3,
-        body.dark-mode .doctor-info h3,
-        body.dark-mode .search-box h3,
-        body.dark-mode .surgery-box h3,
-        body.dark-mode .care-card h3,
-        body.dark-mode .form-group label {
-            color: #f3f4f6;
-        }
-
-        body.dark-mode .hero-text p,
-        body.dark-mode .section-title p,
-        body.dark-mode .card p,
-        body.dark-mode .doctor-info p,
-        body.dark-mode .surgery-box p,
-        body.dark-mode .care-card p {
-            color: #cbd5e1;
-        }
-
-        body.dark-mode .search-box,
-        body.dark-mode .card,
-        body.dark-mode .doctor-card,
-        body.dark-mode .doctor-filter,
-        body.dark-mode .surgery-box,
-        body.dark-mode .care-card,
-        body.dark-mode .appointment-form {
-            background: #1f2937;
-
-            border-color: #374151;
-        }
-
-        body.dark-mode input,
-        body.dark-mode select,
-        body.dark-mode textarea {
-            background: #111827;
-
-            color: #f3f4f6;
-
-            border-color: #4b5563;
-        }
-
-        body.dark-mode input::placeholder,
-        body.dark-mode textarea::placeholder {
-            color: #9ca3af;
-        }
-
-        body.dark-mode .btn-secondary {
-            background: #1f2937;
-            color: #60a5fa;
-            border-color: #60a5fa;
-        }
-
-        body.dark-mode .view-btn {
-            background: #24384b;
-            color: #60a5fa;
-        }
-
-        body.dark-mode #home-care {
-            background: #172d27;
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 850px) {
-
-            header {
-                flex-wrap: wrap;
-
-                padding: 13px 17px;
-            }
-
-            nav {
-                order: 3;
-
-                width: 100%;
-
-                justify-content: center;
-
-                flex-wrap: wrap;
-
-                gap: 10px 18px;
-            }
-
-            #home {
-                grid-template-columns: 1fr;
-            }
-
-            .service-grid,
-            .doctor-grid {
-                grid-template-columns:
-                    repeat(2, minmax(0, 1fr));
-            }
-
-            .care-grid {
-                grid-template-columns:
-                    repeat(2, minmax(0, 1fr));
-            }
-
-            .filter-grid {
-                grid-template-columns:
-                    1fr 1fr;
-            }
-
-            .surgery-box {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns:
-                    1fr 1fr;
-            }
-        }
-
-
-        @media (max-width: 600px) {
-
-            section {
-                padding: 55px 15px;
-            }
-
-            header {
-                padding: 12px 15px;
-            }
-
-            .logo {
-                font-size: 21px;
-            }
-
-            .header-btn {
-                padding: 8px 11px;
-
-                font-size: 11px;
-            }
-
-            nav {
-                display: grid;
-
-                grid-template-columns:
-                    repeat(2, 1fr);
-
-                gap: 5px;
-            }
-
-            nav a {
-                text-align: center;
-
-                font-size: 12px;
-
-                padding: 6px;
-            }
-
-            #home {
-                padding: 45px 15px;
-            }
-
-            .hero-text h1 {
-                font-size: 35px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .hero-buttons .btn {
-                width: 100%;
-            }
-
-            .search-box {
-                padding: 20px;
-            }
-
-            .section-title h2 {
-                font-size: 27px;
-            }
-
-            .service-grid,
-            .doctor-grid,
-            .care-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .filter-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .surgery-box {
-                padding: 21px;
-            }
-
-            .surgery-image {
-                height: 240px;
-            }
-
-            .appointment-form {
-                padding: 20px;
-            }
-
-            .appointment-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .appointment-grid .full {
-                grid-column: auto;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expert Health Care</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;color:#17365d;background:#fff}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+.container{width:min(1180px,94%);margin:auto}
+
+/* Top bar */
+.topbar{background:#064b91;color:#fff;font-size:12px;padding:7px 0}
+.topbar .container{display:flex;justify-content:space-between;align-items:center;gap:15px}
+.top-left,.top-right{display:flex;align-items:center;gap:18px}
+.top-right a{color:#fff}
+
+/* Navigation */
+.navbar{background:#fff;border-bottom:1px solid #ddd;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px #00000012}
+.nav-inner{height:66px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:9px;min-width:185px}
+.logo-mark{width:34px;height:38px;position:relative}
+.logo-mark:before,.logo-mark:after{content:"";position:absolute;background:#17a7a1;border-radius:3px}
+.logo-mark:before{width:14px;height:38px;left:10px;top:0}
+.logo-mark:after{width:34px;height:14px;left:0;top:12px}
+.logo-text strong{display:block;color:#07509b;font-size:22px;line-height:20px}
+.logo-text span{display:block;color:#19a7a1;font-weight:bold;font-size:11px;letter-spacing:1px}
+.logo-text small{display:block;color:#777;font-size:7px;margin-top:2px}
+.nav-links{display:flex;align-items:center;gap:25px;font-size:12px;font-weight:600}
+.nav-links a{padding:25px 0;transition:.2s}
+.nav-links a:hover,.nav-links a.active{color:#0758a5;border-bottom:3px solid #0758a5}
+.menu-btn{display:none;border:0;background:none;font-size:25px;color:#0758a5}
+
+/* Hero */
+.hero{background:linear-gradient(90deg,#f3fbff,#fff);overflow:hidden}
+.hero-inner{min-height:285px;display:flex;align-items:center;position:relative}
+.hero-copy{width:48%;z-index:2}
+.hero h1{font-size:39px;line-height:1.1;color:#103a69;margin-bottom:12px}
+.hero p{font-size:16px;line-height:1.5;color:#40546b;margin-bottom:18px}
+.hero p b{color:#17365d}
+.trust{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:17px}
+.trust span{font-size:10px;color:#3c4c5d;display:flex;align-items:center;gap:5px}
+.trust i{font-size:16px;color:#0877b8}
+.hero-buttons{display:flex;gap:10px}
+.btn{border:0;border-radius:8px;padding:11px 18px;font-weight:bold;font-size:13px;cursor:pointer;transition:.2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-blue{background:#086bc1;color:#fff}
+.btn-green{background:#11a77e;color:#fff}
+.hero-photo{width:52%;height:285px;overflow:hidden}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
+
+/* Four service cards */
+.services{padding:16px 0 10px;background:#fff}
+.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.service-card{border:1px solid #e2e7ed;border-radius:12px;padding:11px;background:#fff;box-shadow:0 2px 8px #0000000c}
+.service-top{display:flex;gap:9px;align-items:center}
+.service-icon{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:27px;background:#eaf5ff}
+.service-card h3{font-size:14px;color:#07529b}
+.service-card p{font-size:9px;color:#666;margin-top:3px;line-height:1.3}
+.service-card ul{list-style:none;margin:9px 0 9px;padding-left:3px;min-height:68px}
+.service-card li{font-size:9px;color:#47596d;margin:5px 0}
+.service-card li:before{content:"•";color:#1680bb;margin-right:5px}
+.service-card .btn{width:100%;padding:8px;font-size:10px}
+
+/* Search + stats */
+.search-area{padding:8px 0}
+.search-box{border:1px solid #e0e6ec;border-radius:12px;padding:10px;display:flex;align-items:center;gap:10px;box-shadow:0 2px 10px #0000000b}
+.search-form{display:flex;flex:1}
+.search-form input{width:100%;border:1px solid #dce4eb;border-radius:20px 0 0 20px;padding:10px 15px;outline:none;font-size:12px}
+.search-form button{border:0;background:#0768ba;color:white;border-radius:0 20px 20px 0;padding:0 18px;cursor:pointer}
+.stats{display:flex;justify-content:space-around;flex:1}
+.stat{display:flex;align-items:center;gap:7px}
+.stat-icon{font-size:22px;color:#159f91}
+.stat strong{display:block;font-size:14px;color:#18508a}
+.stat span{display:block;font-size:9px;color:#6d7883}
+
+/* Why */
+.section-title{text-align:center;font-size:17px;color:#123e6d;margin:13px 0}
+.why-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.why-card{border:1px solid #e4e8ed;border-radius:8px;padding:10px 5px;text-align:center;min-height:65px}
+.why-card .ico{font-size:20px;display:block;margin-bottom:4px}
+.why-card p{font-size:8px;line-height:1.25;color:#495969}
+
+/* Doctors + tests */
+.doctors-tests{display:grid;grid-template-columns:1.65fr 1fr;gap:14px;margin-top:14px}
+.panel{border:1px solid #e3e7eb;border-radius:10px;padding:10px}
+.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.panel-head h2{font-size:14px;color:#174776}
+.panel-head a{font-size:9px;color:#0873bd}
+.doctor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.doctor{border:1px solid #e7eaee;border-radius:7px;overflow:hidden;text-align:center}
+.doctor img{width:100%;height:100px;object-fit:cover;background:#eee}
+.doctor h4{font-size:10px;margin:4px 2px 2px;color:#263f59}
+.doctor p{font-size:7px;color:#777;line-height:1.35;min-height:30px;padding:0 3px}
+.rating{font-size:8px;color:#e59d00}
+.price{font-size:9px;color:#333}
+.book{border:1px solid #1681c3;background:white;color:#0871b8;border-radius:3px;padding:4px 13px;font-size:8px;margin:5px 0 7px;cursor:pointer}
+.tests{width:100%;border-collapse:collapse}
+.tests tr{border-bottom:1px solid #eee}
+.tests td{padding:6px 2px;font-size:9px}
+.test-name{color:#3e4c5b}
+.test-price{font-weight:bold}
+.test-btn{font-size:8px;color:#086bb9;border:1px solid #0c78bf;background:#fff;border-radius:3px;padding:3px 8px}
+
+/* Blue numbers strip */
+.numbers{margin:13px 0;background:linear-gradient(90deg,#075bb1,#0b91ad);border-radius:8px;color:#fff;display:grid;grid-template-columns:repeat(4,1fr);padding:10px}
+.number{text-align:center;border-right:1px solid #ffffff44}
+.number:last-child{border:0}
+.number strong{font-size:16px;display:block}
+.number span{font-size:9px}
+
+/* Reviews */
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.review{border:1px solid #e4e8ec;border-radius:8px;padding:9px;display:flex;gap:9px}
+.review img{width:38px;height:38px;border-radius:50%;object-fit:cover}
+.review h4{font-size:9px;color:#30485e}
+.review p{font-size:8px;color:#687582;line-height:1.4;margin-top:3px}
+
+/* CTA strip */
+.cta{margin-top:13px;background:linear-gradient(90deg,#064c98,#083b7c);color:white;border-radius:7px;padding:11px;display:grid;grid-template-columns:repeat(3,1fr)}
+.cta-item{text-align:center;border-right:1px solid #ffffff40}
+.cta-item:last-child{border:0}
+.cta-item strong{display:block;font-size:11px}
+.cta-item span{font-size:9px}
+
+/* Footer */
+footer{background:#f7fafc;margin-top:0;border-top:1px solid #e4e8ec;padding:15px 0 5px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:20px}
+.footer-title{font-size:10px;color:#244a6e;font-weight:bold;margin-bottom:7px}
+.footer p,.footer a{font-size:8px;color:#687582;line-height:1.8;display:block}
+.social{display:flex;gap:8px;margin-top:6px}
+.social a{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#e8eef4;color:#17659d;font-size:10px}
+.copyright{text-align:center;border-top:1px solid #e3e7eb;margin-top:10px;padding-top:6px;font-size:8px;color:#78838d}
+
+/* Modal / toast */
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:100;align-items:center;justify-content:center;padding:20px}
+.modal.show{display:flex}
+.modal-box{background:white;border-radius:12px;padding:22px;width:min(420px,95%);position:relative}
+.modal-box h2{font-size:19px;color:#164777;margin-bottom:7px}
+.modal-box p{font-size:12px;color:#65727e;margin-bottom:13px}
+.modal-box input,.modal-box select{width:100%;padding:10px;border:1px solid #ddd;border-radius:7px;margin:5px 0;outline:none}
+.close{position:absolute;right:14px;top:10px;border:0;background:none;font-size:23px;cursor:pointer;color:#777}
+.toast{position:fixed;right:18px;bottom:18px;background:#123f70;color:white;padding:11px 16px;border-radius:8px;font-size:12px;display:none;z-index:120}
+.toast.show{display:block}
+
+/* Responsive */
+@media(max-width:900px){
+.nav-links{gap:13px}
+.hero h1{font-size:31px}
+.service-grid{grid-template-columns:repeat(2,1fr)}
+.why-grid{grid-template-columns:repeat(3,1fr)}
+.doctors-tests{grid-template-columns:1fr}
+}
+@media(max-width:680px){
+.top-left{display:none}
+.topbar .container{justify-content:flex-end}
+.nav-inner{height:58px}
+.logo-text strong{font-size:18px}
+.logo-text span{font-size:9px}
+.menu-btn{display:block}
+.nav-links{display:none;position:absolute;left:0;right:0;top:58px;background:white;flex-direction:column;align-items:flex-start;padding:10px 5%;box-shadow:0 4px 10px #0002}
+.nav-links.open{display:flex}
+.nav-links a{padding:9px 0;border:0!important}
+.hero-inner{display:block}
+.hero-copy{width:100%;padding:28px 0 15px}
+.hero h1{font-size:30px}
+.hero-photo{width:100%;height:220px}
+.trust{gap:9px}
+.service-grid{grid-template-columns:1fr 1fr}
+.search-box{display:block}
+.stats{margin-top:12px}
+.doctor-grid{grid-template-columns:repeat(2,1fr)}
+.footer-grid{grid-template-columns:1fr 1fr}
+.cta{grid-template-columns:1fr}
+.cta-item{border-right:0;border-bottom:1px solid #ffffff40;padding:6px}
+.cta-item:last-child{border:0}
+}
+@media(max-width:430px){
+.service-grid,.why-grid{grid-template-columns:1fr}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.footer-grid{grid-template-columns:1fr}
+.hero-buttons{flex-direction:column}
+.hero-buttons .btn{width:100%}
+}
+</style>
 </head>
-
 
 <body>
 
-
-    <!-- =========================
-         HEADER
-    ========================== -->
-
-    <header>
-
-        <a href="#home" class="logo">
-            ExpertCare
-        </a>
-
-
-        <nav>
-
-            <a href="#home">
-                Home
-            </a>
-
-            <a href="#services">
-                Services
-            </a>
-
-            <a href="#doctors">
-                Doctors
-            </a>
-
-            <a href="#surgery">
-                Surgery
-            </a>
-
-            <a href="#home-care">
-                Home Care
-            </a>
-
-            <a href="#appointment">
-                Appointment
-            </a>
-
-        </nav>
-
-
-        <button
-            id="darkModeBtn"
-            class="dark-mode-btn"
-            onclick="toggleDarkMode()"
-        >
-            🌙 Dark Mode
-        </button>
-
-    </header>
-
-
-
-    <!-- =========================
-         HERO
-    ========================== -->
-
-    <section id="home">
-
-
-        <div class="hero-text">
-
-            <span>
-                Trusted Healthcare Services
-            </span>
-
-            <h1>
-                Find the right doctor
-                for your healthcare needs.
-            </h1>
-
-            <p>
-                Find experienced doctors in your area,
-                book appointments, explore surgery
-                services and get professional healthcare
-                at home.
-            </p>
-
-
-            <div class="hero-buttons">
-
-                <a
-                    href="#doctors"
-                    class="btn btn-primary"
-                >
-                    Find a Doctor
-                </a>
-
-                <a
-                    href="#appointment"
-                    class="btn btn-secondary"
-                >
-                    Book Appointment
-                </a>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- SEARCH BOX -->
-
-        <div class="search-box">
-
-            <h3>
-                Find a Doctor
-            </h3>
-
-
-            <div class="form-group">
-
-                <label>
-                    Search Doctor
-                </label>
-
-                <input
-                    type="text"
-                    id="searchDoctor"
-                    placeholder="Doctor or specialization"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Area
-                </label>
-
-                <select id="areaFilter">
-
-                    <option value="all">
-                        All Areas
-                    </option>
-
-                    <option value="Delhi">
-                        Delhi
-                    </option>
-
-                    <option value="Noida">
-                        Noida
-                    </option>
-
-                    <option value="Gurgaon">
-                        Gurgaon
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Specialization
-                </label>
-
-                <select id="specializationFilter">
-
-                    <option value="all">
-                        All Specializations
-                    </option>
-
-                    <option value="Cardiologist">
-                        Cardiologist
-                    </option>
-
-                    <option value="Gynecologist">
-                        Gynecologist
-                    </option>
-
-                    <option value="Orthopedic">
-                        Orthopedic
-                    </option>
-
-                    <option value="Dermatologist">
-                        Dermatologist
-                    </option>
-
-                    <option value="Neurologist">
-                        Neurologist
-                    </option>
-
-                    <option value="Pediatrician">
-                        Pediatrician
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <button onclick="filterDoctors()">
-                Search Doctors
-            </button>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         SERVICES
-    ========================== -->
-
-    <section id="services">
-
-        <div class="section-title">
-
-            <span>
-                Our Services
-            </span>
-
-            <h2>
-                Healthcare services for every need
-            </h2>
-
-            <p>
-                Choose from professional medical
-                services according to your needs.
-            </p>
-
-        </div>
-
-
-        <div class="service-grid">
-
-
-            <div class="card">
-
-                <div class="icon">
-                    🩺
-                </div>
-
-                <h3>
-                    Doctor Appointment
-                </h3>
-
-                <p>
-                    Find experienced doctors and
-                    book an appointment according
-                    to your preferred time.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="icon">
-                    🏥
-                </div>
-
-                <h3>
-                    Surgery Services
-                </h3>
-
-                <p>
-                    Explore professional surgical
-                    care and connect with suitable
-                    specialists.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="icon">
-                    🏠
-                </div>
-
-                <h3>
-                    Home Care
-                </h3>
-
-                <p>
-                    Get healthcare support and
-                    professional assistance at home.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         DOCTORS
-    ========================== -->
-
-    <section id="doctors">
-
-        <div class="section-title">
-
-            <span>
-                Our Doctors
-            </span>
-
-            <h2>
-                Find doctors in your area
-            </h2>
-
-            <p>
-                Search doctors by name,
-                specialization and location.
-            </p>
-
-        </div>
-
-
-        <!-- FILTER -->
-
-        <div class="doctor-filter">
-
-            <div class="filter-grid">
-
-
-                <div class="form-group">
-
-                    <label>
-                        Doctor / Search
-                    </label>
-
-                    <input
-                        type="text"
-                        id="doctorSearch2"
-                        placeholder="Search doctor..."
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Area
-                    </label>
-
-                    <select id="areaFilter2">
-
-                        <option value="all">
-                            All Areas
-                        </option>
-
-                        <option value="Delhi">
-                            Delhi
-                        </option>
-
-                        <option value="Noida">
-                            Noida
-                        </option>
-
-                        <option value="Gurgaon">
-                            Gurgaon
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Specialization
-                    </label>
-
-                    <select id="specializationFilter2">
-
-                        <option value="all">
-                            All Specializations
-                        </option>
-
-                        <option value="Cardiologist">
-                            Cardiologist
-                        </option>
-
-                        <option value="Gynecologist">
-                            Gynecologist
-                        </option>
-
-                        <option value="Orthopedic">
-                            Orthopedic
-                        </option>
-
-                        <option value="Dermatologist">
-                            Dermatologist
-                        </option>
-
-                        <option value="Neurologist">
-                            Neurologist
-                        </option>
-
-                        <option value="Pediatrician">
-                            Pediatrician
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <button onclick="filterDoctors()">
-                    Search
-                </button>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- DOCTOR GRID -->
-
-        <div
-            class="doctor-grid"
-            id="doctorGrid"
-        >
-
-
-            <!-- DOCTOR 1 -->
-
-            <div
-                class="doctor-card"
-                data-name="rahul sharma"
-                data-area="delhi"
-                data-specialization="cardiologist"
-            >
-
-                <img
-                    src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80"
-                    alt="Dr Rahul Sharma"
-                >
-
-                <div class="doctor-info">
-
-                    <span class="doctor-speciality">
-                        Cardiologist
-                    </span>
-
-                    <h3>
-                        Dr. Rahul Sharma
-                    </h3>
-
-                    <p>
-                        📍 Delhi
-                    </p>
-
-                    <p>
-                        ⭐ 10 Years Experience
-                    </p>
-
-                    <p>
-                        🕐 10:00 AM - 2:00 PM
-                    </p>
-
-
-                    <div class="doctor-actions">
-
-                        <button
-                            class="view-btn"
-                            onclick="showDoctor(
-                                'Dr. Rahul Sharma',
-                                'Cardiologist',
-                                'Delhi'
-                            )"
-                        >
-                            View Profile
-                        </button>
-
-
-                        <button
-                            class="book-btn"
-                            onclick="selectDoctor(
-                                'Dr. Rahul Sharma'
-                            )"
-                        >
-                            Book
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- DOCTOR 2 -->
-
-            <div
-                class="doctor-card"
-                data-name="priya verma"
-                data-area="noida"
-                data-specialization="gynecologist"
-            >
-
-                <img
-                    src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80"
-                    alt="Dr Priya Verma"
-                >
-
-                <div class="doctor-info">
-
-                    <span class="doctor-speciality">
-                        Gynecologist
-                    </span>
-
-                    <h3>
-                        Dr. Priya Verma
-                    </h3>
-
-                    <p>
-                        📍 Noida
-                    </p>
-
-                    <p>
-                        ⭐ 8 Years Experience
-                    </p>
-
-                    <p>
-                        🕐 11:00 AM - 3:00 PM
-                    </p>
-
-
-                    <div class="doctor-actions">
-
-                        <button
-                            class="view-btn"
-                            onclick="showDoctor(
-                                'Dr. Priya Verma',
-                                'Gynecologist',
-                                'Noida'
-                            )"
-                        >
-                            View Profile
-                        </button>
-
-
-                        <button
-                            class="book-btn"
-                            onclick="selectDoctor(
-                                'Dr. Priya Verma'
-                            )"
-                        >
-                            Book
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- DOCTOR 3 -->
-
-            <div
-                class="doctor-card"
-                data-name="amit kumar"
-                data-area="gurgaon"
-                data-specialization="orthopedic"
-            >
-
-                <img
-                    src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80"
-                    alt="Dr Amit Kumar"
-                >
-
-                <div class="doctor-info">
-
-                    <span class="doctor-speciality">
-                        Orthopedic
-                    </span>
-
-                    <h3>
-                        Dr. Amit Kumar
-                    </h3>
-
-                    <p>
-                        📍 Gurgaon
-                    </p>
-
-                    <p>
-                        ⭐ 12 Years Experience
-                    </p>
-
-                    <p>
-                        🕐 9:00 AM - 1:00 PM
-                    </p>
-
-
-                    <div class="doctor-actions">
-
-                        <button
-                            class="view-btn"
-                            onclick="showDoctor(
-                                'Dr. Amit Kumar',
-                                'Orthopedic',
-                                'Gurgaon'
-                            )"
-                        >
-                            View Profile
-                        </button>
-
-
-                        <button
-                            class="book-btn"
-                            onclick="selectDoctor(
-                                'Dr. Amit Kumar'
-                            )"
-                        >
-                            Book
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- DOCTOR 4 -->
-
-            <div
-                class="doctor-card"
-                data-name="neha singh"
-                data-area="delhi"
-                data-specialization="dermatologist"
-            >
-
-                <img
-                    src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&q=80"
-                    alt="Dr Neha Singh"
-                >
-
-                <div class="doctor-info">
-
-                    <span class="doctor-speciality">
-                        Dermatologist
-                    </span>
-
-                    <h3>
-                        Dr. Neha Singh
-                    </h3>
-
-                    <p>
-                        📍 Delhi
-                    </p>
-
-                    <p>
-                        ⭐ 7 Years Experience
-                    </p>
-
-                    <p>
-                        🕐 2:00 PM - 6:00 PM
-                    </p>
-
-
-                    <div class="doctor-actions">
-
-                        <button
-                            class="view-btn"
-                            onclick="showDoctor(
-                                'Dr. Neha Singh',
-                                'Dermatologist',
-                                'Delhi'
-                            )"
-                        >
-                            View Profile
-                        </button>
-
-
-                        <button
-                            class="book-btn"
-                            onclick="selectDoctor(
-                                'Dr. Neha Singh'
-                            )"
-                        >
-                            Book
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- DOCTOR 5 -->
-
-            <div
-                class="doctor-card"
-                data-name="arjun mehta"
-                data-area="noida"
-                data-specialization="neurologist"
-            >
-
-                <img
-                    src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=600&q=80"
-                    alt="Dr Arjun Mehta"
-                >
-
-                <div class="doctor-info">
-
-                    <span class="doctor-speciality">
-                        Neurologist
-                    </span>
-
-                    <h3>
-                        Dr. Arjun Mehta
-                    </h3>
-
-                    <p>
-                        📍 Noida
-                    </p>
-
-                    <p>
-                        ⭐ 11 Years Experience
-                    </p>
-
-                    <p>
-                        🕐 10:00 AM - 4:00 PM
-                    </p>
-
-
-                    <div class="doctor-actions">
-
-                        <button
-                            class="view-btn"
-                            onclick="showDoctor(
-                                'Dr. Arjun Mehta',
-                                'Neurologist',
-                                'Noida'
-                            )"
-                        >
-                            View Profile
-                        </button>
-
-
-                        <button
-                            class="book-btn"
-                            onclick="selectDoctor(
-                                'Dr. Arjun Mehta'
-                            )"
-                        >
-                            Book
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- DOCTOR 6 -->
-
-            <div
-                class="doctor-card"
-                data-name="anjali gupta"
-                data-area="gurgaon"
-                data-specialization="pediatrician"
-            >
-
-                <img
-                    src="https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=600&q=80"
-                    alt="Dr Anjali Gupta"
-                >
-
-                <div class="doctor-info">
-
-                    <span class="doctor-speciality">
-                        Pediatrician
-                    </span>
-
-                    <h3>
-                        Dr. Anjali Gupta
-                    </h3>
-
-                    <p>
-                        📍 Gurgaon
-                    </p>
-
-                    <p>
-                        ⭐ 9 Years Experience
-                    </p>
-
-                    <p>
-                        🕐 9:00 AM - 12:00 PM
-                    </p>
-
-
-                    <div class="doctor-actions">
-
-                        <button
-                            class="view-btn"
-                            onclick="showDoctor(
-                                'Dr. Anjali Gupta',
-                                'Pediatrician',
-                                'Gurgaon'
-                            )"
-                        >
-                            View Profile
-                        </button>
-
-
-                        <button
-                            class="book-btn"
-                            onclick="selectDoctor(
-                                'Dr. Anjali Gupta'
-                            )"
-                        >
-                            Book
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         SURGERY
-    ========================== -->
-
-    <section id="surgery">
-
-        <div class="section-title">
-
-            <span>
-                Surgery Services
-            </span>
-
-            <h2>
-                Professional surgical care
-            </h2>
-
-            <p>
-                Connect with specialists for
-                different surgical healthcare needs.
-            </p>
-
-        </div>
-
-
-        <div class="surgery-box">
-
-
-            <div>
-
-                <h3>
-                    Expert surgical support
-                </h3>
-
-                <p>
-                    Get guidance and connect with
-                    experienced specialists for your
-                    healthcare requirements.
-                </p>
-
-
-                <ul>
-
-                    <li>
-                        Experienced specialists
-                    </li>
-
-                    <li>
-                        Hospital coordination
-                    </li>
-
-                    <li>
-                        Pre-surgery consultation
-                    </li>
-
-                    <li>
-                        Post-surgery support
-                    </li>
-
-                </ul>
-
-
-                <a
-                    href="#appointment"
-                    class="btn btn-primary"
-                >
-                    Consult a Doctor
-                </a>
-
-            </div>
-
-
-            <img
-                class="surgery-image"
-                src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=900&q=80"
-                alt="Surgery healthcare"
-            >
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         HOME CARE
-    ========================== -->
-
-    <section id="home-care">
-
-        <div class="section-title">
-
-            <span>
-                Home Care
-            </span>
-
-            <h2>
-                Healthcare at your home
-            </h2>
-
-            <p>
-                Professional support when you
-                need healthcare at home.
-            </p>
-
-        </div>
-
-
-        <div class="care-grid">
-
-
-            <div class="care-card">
-
-                <div class="icon">
-                    👩‍⚕️
-                </div>
-
-                <h3>
-                    Nursing Care
-                </h3>
-
-                <p>
-                    Professional nursing assistance
-                    at home.
-                </p>
-
-            </div>
-
-
-            <div class="care-card">
-
-                <div class="icon">
-                    💊
-                </div>
-
-                <h3>
-                    Medicine Support
-                </h3>
-
-                <p>
-                    Help with medication schedules
-                    and care routines.
-                </p>
-
-            </div>
-
-
-            <div class="care-card">
-
-                <div class="icon">
-                    🧑‍🦽
-                </div>
-
-                <h3>
-                    Elder Care
-                </h3>
-
-                <p>
-                    Support and assistance for
-                    elderly family members.
-                </p>
-
-            </div>
-
-
-            <div class="care-card">
-
-                <div class="icon">
-                    🏠
-                </div>
-
-                <h3>
-                    Home Visit
-                </h3>
-
-                <p>
-                    Healthcare professionals can
-                    provide home-based support.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         APPOINTMENT
-    ========================== -->
-
-    <section id="appointment">
-
-        <div class="section-title">
-
-            <span>
-                Appointment
-            </span>
-
-            <h2>
-                Book your appointment
-            </h2>
-
-            <p>
-                Fill the form and submit your
-                appointment request.
-            </p>
-
-        </div>
-
-
-        <!--
-            IMPORTANT:
-            Replace YOUR_FORMSPREE_ID with
-            your actual Formspree ID.
-        -->
-
-        <form
-            class="appointment-form"
-            action="https://formspree.io/f/mppagaed"
-            method="POST"
-            id="appointmentForm"
-        >
-
-
-            <div class="appointment-grid">
-
-
-                <div class="form-group">
-
-                    <label>
-                        Your Name *
-                    </label>
-
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="Enter your name"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Phone *
-                    </label>
-
-                    <input
-                        type="tel"
-                        name="phone"
-                        placeholder="Enter phone number"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Email
-                    </label>
-
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Enter email"
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Select Doctor *
-                    </label>
-
-                    <select
-                        name="doctor"
-                        id="doctorSelect"
-                        required
-                    >
-
-                        <option value="">
-                            Select Doctor
-                        </option>
-
-                        <option>
-                            Dr. Rahul Sharma
-                        </option>
-
-                        <option>
-                            Dr. Priya Verma
-                        </option>
-
-                        <option>
-                            Dr. Amit Kumar
-                        </option>
-
-                        <option>
-                            Dr. Neha Singh
-                        </option>
-
-                        <option>
-                            Dr. Arjun Mehta
-                        </option>
-
-                        <option>
-                            Dr. Anjali Gupta
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Appointment Date *
-                    </label>
-
-                    <input
-                        type="date"
-                        name="date"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Preferred Time
-                    </label>
-
-                    <input
-                        type="time"
-                        name="time"
-                    >
-
-                </div>
-
-
-                <div class="form-group full">
-
-                    <label>
-                        Message
-                    </label>
-
-                    <textarea
-                        name="message"
-                        placeholder="Tell us anything important..."
-                    ></textarea>
-
-                </div>
-
-
-                <input
-                    type="hidden"
-                    name="_subject"
-                    value="New Doctor Appointment - ExpertCare"
-                >
-
-
-                <div class="form-group full">
-
-                    <button type="submit">
-                        Submit Appointment
-                    </button>
-
-                </div>
-
-            </div>
-
-        </form>
-
-    </section>
-
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        <div class="footer-grid">
-
-
-            <div>
-
-                <h3>
-                    ExpertCare
-                </h3>
-
-                <p>
-                    Making healthcare easier by
-                    helping patients find doctors,
-                    book appointments and explore
-                    healthcare services.
-                </p>
-
-            </div>
-
-
-            <div>
-
-                <h3>
-                    Quick Links
-                </h3>
-
-                <ul>
-
-                    <li>
-                        <a href="#home">
-                            Home
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#services">
-                            Services
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#doctors">
-                            Doctors
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#appointment">
-                            Appointment
-                        </a>
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-            <div>
-
-                <h3>
-                    Services
-                </h3>
-
-                <ul>
-
-                    <li>
-                        <a href="#doctors">
-                            Doctor Appointment
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#surgery">
-                            Surgery
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#home-care">
-                            Home Care
-                        </a>
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-            <div>
-
-                <h3>
-                    Contact
-                </h3>
-
-                <p>
-                    📞 +91 98765 43210
-                </p>
-
-                <p>
-                    📧 support@expertcare.com
-                </p>
-
-                <p>
-                    📍 Delhi NCR
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-        <div class="copyright">
-
-            <p>
-                © 2026 ExpertCare. All Rights Reserved.
-            </p>
-
-        </div>
-
-    </footer>
-
-
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
-
-    <script>
-
-
-        /* =========================
-           DARK MODE
-        ========================= */
-
-        function toggleDarkMode() {
-
-            document.body.classList.toggle(
-                "dark-mode"
-            );
-
-
-            const button =
-                document.getElementById(
-                    "darkModeBtn"
-                );
-
-
-            if (
-                document.body.classList.contains(
-                    "dark-mode"
-                )
-            ) {
-
-                button.innerHTML =
-                    "☀️ Light Mode";
-
-                localStorage.setItem(
-                    "darkMode",
-                    "enabled"
-                );
-
-            } else {
-
-                button.innerHTML =
-                    "🌙 Dark Mode";
-
-                localStorage.setItem(
-                    "darkMode",
-                    "disabled"
-                );
-
-            }
-
-        }
-
-
-        /* =========================
-           REMEMBER DARK MODE
-        ========================= */
-
-        if (
-            localStorage.getItem("darkMode")
-            === "enabled"
-        ) {
-
-            document.body.classList.add(
-                "dark-mode"
-            );
-
-            document.getElementById(
-                "darkModeBtn"
-            ).innerHTML =
-                "☀️ Light Mode";
-
-        }
-
-
-
-        /* =========================
-           FILTER DOCTORS
-        ========================= */
-
-        function filterDoctors() {
-
-
-            const search1 =
-                document
-                    .getElementById(
-                        "searchDoctor"
-                    )
-                    .value
-                    .toLowerCase()
-                    .trim();
-
-
-            const search2 =
-                document
-                    .getElementById(
-                        "doctorSearch2"
-                    )
-                    .value
-                    .toLowerCase()
-                    .trim();
-
-
-            const area1 =
-                document
-                    .getElementById(
-                        "areaFilter"
-                    )
-                    .value
-                    .toLowerCase();
-
-
-            const area2 =
-                document
-                    .getElementById(
-                        "areaFilter2"
-                    )
-                    .value
-                    .toLowerCase();
-
-
-            const specialization1 =
-                document
-                    .getElementById(
-                        "specializationFilter"
-                    )
-                    .value
-                    .toLowerCase();
-
-
-            const specialization2 =
-                document
-                    .getElementById(
-                        "specializationFilter2"
-                    )
-                    .value
-                    .toLowerCase();
-
-
-            const search =
-                search2 || search1;
-
-
-            const area =
-                area2 !== "all"
-                    ? area2
-                    : area1 !== "all"
-                        ? area1
-                        : "all";
-
-
-            const specialization =
-                specialization2 !== "all"
-                    ? specialization2
-                    : specialization1;
-
-
-            const doctors =
-                document.querySelectorAll(
-                    ".doctor-card"
-                );
-
-
-            let found = 0;
-
-
-            doctors.forEach(
-                function(doctor) {
-
-
-                    const name =
-                        doctor.dataset.name;
-
-
-                    const doctorArea =
-                        doctor.dataset.area;
-
-
-                    const doctorSpecialization =
-                        doctor.dataset.specialization;
-
-
-                    const searchMatch =
-                        !search ||
-                        name.includes(search) ||
-                        doctorSpecialization
-                            .includes(search);
-
-
-                    const areaMatch =
-                        area === "all" ||
-                        doctorArea === area;
-
-
-                    const specializationMatch =
-                        specialization === "all" ||
-                        doctorSpecialization
-                            === specialization;
-
-
-                    if (
-                        searchMatch &&
-                        areaMatch &&
-                        specializationMatch
-                    ) {
-
-                        doctor.style.display =
-                            "";
-
-                        found++;
-
-                    } else {
-
-                        doctor.style.display =
-                            "none";
-
-                    }
-
-                }
-            );
-
-
-            if (found === 0) {
-
-                alert(
-                    "No doctor found for your search."
-                );
-
-            }
-
-
-            document
-                .getElementById("doctors")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
-
-        }
-
-
-
-        /* =========================
-           SELECT DOCTOR
-        ========================= */
-
-        function selectDoctor(name) {
-
-
-            const select =
-                document.getElementById(
-                    "doctorSelect"
-                );
-
-
-            select.value = name;
-
-
-            document
-                .getElementById(
-                    "appointment"
-                )
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
-
-        }
-
-
-
-        /* =========================
-           DOCTOR PROFILE
-        ========================= */
-
-        function showDoctor(
-            name,
-            specialization,
-            area
-        ) {
-
-
-            alert(
-                name +
-                "\n\nSpecialization: " +
-                specialization +
-                "\nArea: " +
-                area
-            );
-
-        }
-
-
-
-        /* =========================
-           SYNC SEARCH
-        ========================= */
-
-        document
-            .getElementById(
-                "areaFilter"
-            )
-            .addEventListener(
-                "change",
-                function() {
-
-                    document
-                        .getElementById(
-                            "areaFilter2"
-                        )
-                        .value =
-                        this.value;
-
-                }
-            );
-
-
-        document
-            .getElementById(
-                "areaFilter2"
-            )
-            .addEventListener(
-                "change",
-                function() {
-
-                    document
-                        .getElementById(
-                            "areaFilter"
-                        )
-                        .value =
-                        this.value;
-
-                }
-            );
-
-
-        document
-            .getElementById(
-                "specializationFilter"
-            )
-            .addEventListener(
-                "change",
-                function() {
-
-                    document
-                        .getElementById(
-                            "specializationFilter2"
-                        )
-                        .value =
-                        this.value;
-
-                }
-            );
-
-
-        document
-            .getElementById(
-                "specializationFilter2"
-            )
-            .addEventListener(
-                "change",
-                function() {
-
-                    document
-                        .getElementById(
-                            "specializationFilter"
-                        )
-                        .value =
-                        this.value;
-
-                }
-            );
-
-
-        document
-            .getElementById(
-                "searchDoctor"
-            )
-            .addEventListener(
-                "input",
-                function() {
-
-                    document
-                        .getElementById(
-                            "doctorSearch2"
-                        )
-                        .value =
-                        this.value;
-
-                }
-            );
-
-
-        document
-            .getElementById(
-                "doctorSearch2"
-            )
-            .addEventListener(
-                "input",
-                function() {
-
-                    document
-                        .getElementById(
-                            "searchDoctor"
-                        )
-                        .value =
-                        this.value;
-
-                }
-            );
-
-
-
-        /* =========================
-           DATE
-        ========================= */
-
-        const dateInput =
-            document.querySelector(
-                'input[name="date"]'
-            );
-
-
-        if (dateInput) {
-
-            const today =
-                new Date()
-                    .toISOString()
-                    .split("T")[0];
-
-
-            dateInput.min =
-                today;
-
-        }
-
-    </script>
+<div class="topbar">
+  <div class="container">
+    <div class="top-left">♡ We care for your health, every day</div>
+    <div class="top-right">
+      <span>Download App 📱</span>
+      <a href="tel:8595790610">☎ Helpline: 85957 09610</a>
+      <a href="#">👤 Login / Signup</a>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar">
+  <div class="container nav-inner">
+    <a href="#home" class="logo">
+      <div class="logo-mark"></div>
+      <div class="logo-text">
+        <strong>EXPERT</strong>
+        <span>HEALTH CARE</span>
+        <small>CARE YOU CAN TRUST</small>
+      </div>
+    </a>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#home" class="active">Home</a>
+      <a href="#doctors">Doctor Appointment</a>
+      <a href="#services">Surgery Care</a>
+      <a href="#services">Nursing Care</a>
+      <a href="#tests">Lab Tests</a>
+      <a href="#packages">Health Packages</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+  </div>
+</nav>
+
+<main id="home">
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <h1>All Healthcare Services<br>in One Place</h1>
+      <p><b>Doctor Appointment, Surgery, Nursing Care,<br>Lab Tests</b> – Sab kuch ek hi jagah.</p>
+      <div class="trust">
+        <span>🛡️ Verified Doctors & Nurses</span>
+        <span>🏥 Trusted Hospitals & Labs</span>
+        <span>🔒 Secure & Easy Booking</span>
+        <span>◷ 24/7 Support</span>
+      </div>
+      <div class="hero-buttons">
+        <a class="btn btn-blue" href="tel:8595790610">☎ Call Now 85957 09610</a>
+        <a class="btn btn-green" href="https://wa.me/918595790610" target="_blank">◉ WhatsApp Us</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=80" alt="Healthcare team">
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+<div class="container service-grid">
+
+  <div class="service-card">
+    <div class="service-top">
+      <div class="service-icon">👨‍⚕️</div>
+      <div><h3>1. Doctor<br>Appointment</h3><p>Book appointment with experienced doctors.</p></div>
+    </div>
+    <ul><li>Choose Speciality</li><li>Select Doctor</li><li>Pick Date & Time</li><li>Easy Booking</li></ul>
+    <button class="btn btn-blue" onclick="openModal('Doctor Appointment')">Book Appointment →</button>
+  </div>
+
+  <div class="service-card">
+    <div class="service-top">
+      <div class="service-icon">🏥</div>
+      <div><h3>2. Surgery<br>Care</h3><p>Complete guidance & coordination for your surgery.</p></div>
+    </div>
+    <ul><li>Surgery Requirement</li><li>Reports Upload</li><li>Expert Surgeon</li><li>Hospital Coordination</li></ul>
+    <button class="btn btn-green" onclick="openModal('Surgery Care')">Get Surgery Help →</button>
+  </div>
+
+  <div class="service-card">
+    <div class="service-top">
+      <div class="service-icon">👩‍⚕️</div>
+      <div><h3>3. Nursing<br>Care</h3><p>Trained nurses for home & health care services.</p></div>
+    </div>
+    <ul><li>Home Nursing</li><li>Post-operative Care</li><li>Elderly Assistance</li><li>Monitoring Services</li></ul>
+    <button class="btn" style="background:#ef8200;color:#fff" onclick="openModal('Nursing Care')">Book Nursing Care →</button>
+  </div>
+
+  <div class="service-card">
+    <div class="service-top">
+      <div class="service-icon">🧪</div>
+      <div><h3>4. Lab Tests /<br>Diagnostics</h3><p>Book lab tests with home sample collection.</p></div>
+    </div>
+    <ul><li>Wide Range of Tests</li><li>Home Collection</li><li>Accurate Reports</li><li>Trusted Labs</li></ul>
+    <button class="btn" style="background:#7642bd;color:#fff" onclick="scrollToTests()">Book Lab Test →</button>
+  </div>
+
+</div>
+</section>
+
+<section class="search-area">
+<div class="container search-box">
+  <form class="search-form" onsubmit="searchSite(event)">
+    <input id="searchInput" type="text" placeholder="Search by speciality, doctor name, test, service...">
+    <button type="submit">🔍 Search</button>
+  </form>
+  <div class="stats">
+    <div class="stat"><div class="stat-icon">♙</div><div><strong>1000+</strong><span>Doctors</span></div></div>
+    <div class="stat"><div class="stat-icon">♧</div><div><strong>500+</strong><span>Nurses</span></div></div>
+    <div class="stat"><div class="stat-icon">⚗</div><div><strong>200+</strong><span>Lab Tests</span></div></div>
+    <div class="stat"><div class="stat-icon">♙</div><div><strong>50+</strong><span>Hospitals</span></div></div>
+  </div>
+</div>
+</section>
+
+<section class="container" id="about">
+<h2 class="section-title">Why Choose Expert Health Care?</h2>
+<div class="why-grid">
+  <div class="why-card"><span class="ico">🛡️</span><p>Verified & Experienced<br>Doctors & Nurses</p></div>
+  <div class="why-card"><span class="ico">🏥</span><p>Trusted Hospitals<br>& Labs</p></div>
+  <div class="why-card"><span class="ico">◷</span><p>Easy &<br>Fast Booking</p></div>
+  <div class="why-card"><span class="ico">🔐</span><p>Secure Payments<br>& Data</p></div>
+  <div class="why-card"><span class="ico">🎧</span><p>24/7 Customer<br>Support</p></div>
+  <div class="why-card"><span class="ico">💬</span><p>Genuine Patient<br>Reviews</p></div>
+</div>
+</section>
+
+<section class="container doctors-tests" id="doctors">
+  <div class="panel">
+    <div class="panel-head"><h2>Top Doctors</h2><a href="#" onclick="showToast('Showing all doctors');return false">View All →</a></div>
+    <div class="doctor-grid">
+
+      <div class="doctor">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Doctor">
+        <h4>Dr. Amit Verma</h4><p>General Physician<br>MBBS, MD<br>10+ Years Exp.</p>
+        <div class="rating">★ 4.8 (120)</div><div class="price">₹500</div>
+        <button class="book" onclick="openModal('Appointment with Dr. Amit Verma')">Book Now</button>
+      </div>
+
+      <div class="doctor">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Doctor">
+        <h4>Dr. Neha Sharma</h4><p>Gynecologist<br>MBBS, DGO<br>8+ Years Exp.</p>
+        <div class="rating">★ 4.9 (95)</div><div class="price">₹700</div>
+        <button class="book" onclick="openModal('Appointment with Dr. Neha Sharma')">Book Now</button>
+      </div>
+
+      <div class="doctor">
+        <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Doctor">
+        <h4>Dr. Rohit Gupta</h4><p>Orthopedic<br>MBBS, MS (Ortho)<br>14+ Years Exp.</p>
+        <div class="rating">★ 4.7 (110)</div><div class="price">₹800</div>
+        <button class="book" onclick="openModal('Appointment with Dr. Rohit Gupta')">Book Now</button>
+      </div>
+
+      <div class="doctor">
+        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Doctor">
+        <h4>Dr. Sandeep Bansal</h4><p>General Surgeon<br>MBBS, MS<br>15+ Years Exp.</p>
+        <div class="rating">★ 4.8 (105)</div><div class="price">₹900</div>
+        <button class="book" onclick="openModal('Appointment with Dr. Sandeep Bansal')">Book Now</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="panel" id="tests">
+    <div class="panel-head"><h2>Popular Lab Tests</h2><a href="#" onclick="showToast('Showing all tests');return false">View All →</a></div>
+    <table class="tests">
+      <tr><td class="test-name">🩸 Complete Blood Count (CBC)</td><td class="test-price">₹399</td><td><button class="test-btn" onclick="openModal('CBC Test')">Book</button></td></tr>
+      <tr><td class="test-name">🧪 Liver Function Test (LFT)</td><td class="test-price">₹599</td><td><button class="test-btn" onclick="openModal('LFT Test')">Book</button></td></tr>
+      <tr><td class="test-name">🧫 Kidney Function Test (KFT)</td><td class="test-price">₹599</td><td><button class="test-btn" onclick="openModal('KFT Test')">Book</button></td></tr>
+      <tr><td class="test-name">🩸 Thyroid Profile (T3, T4, TSH)</td><td class="test-price">₹699</td><td><button class="test-btn" onclick="openModal('Thyroid Test')">Book</button></td></tr>
+      <tr><td class="test-name">🩸 HbA1c (Diabetes Test)</td><td class="test-price">₹499</td><td><button class="test-btn" onclick="openModal('HbA1c Test')">Book</button></td></tr>
+    </table>
+    <div style="text-align:center;margin-top:10px"><a href="#tests" style="font-size:10px;color:#0871b8">View All Tests & Packages →</a></div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="numbers">
+    <div class="number"><strong>10,000+</strong><span>Happy Patients</span></div>
+    <div class="number"><strong>1000+</strong><span>Doctors</span></div>
+    <div class="number"><strong>500+</strong><span>Nurses</span></div>
+    <div class="number"><strong>200+</strong><span>Partner Labs & Hospitals</span></div>
+  </div>
+</section>
+
+<section class="container" id="packages">
+<h2 class="section-title">What Our Patients Say <a href="#" style="float:right;font-size:9px;color:#0871b8" onclick="showToast('More reviews coming soon');return false">View All Reviews →</a></h2>
+<div class="review-grid">
+  <div class="review"><img src="https://randomuser.me/api/portraits/men/41.jpg" alt=""><div><h4>Rajesh Kumar</h4><p>★★★★★<br>Very good experience. Doctor se baat karke bahut satisfaction mila. Staff bhi helpful tha.</p></div></div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/women/65.jpg" alt=""><div><h4>Priya Sharma</h4><p>★★★★★<br>Home nursing service bahut acchi hai. Nurse time par aayi aur proper care diya.</p></div></div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/men/45.jpg" alt=""><div><h4>Anil Verma</h4><p>★★★★★<br>Lab test ke liye home collection service bahut convenient hai.</p></div></div>
+</div>
+</section>
+
+<section class="container" id="contact">
+<div class="cta">
+  <div class="cta-item"><strong>☎ Need Help? Call us now!</strong><span>85957 09610</span></div>
+  <div class="cta-item"><strong>◉ Chat on WhatsApp</strong><span>Click to chat with us</span></div>
+  <div class="cta-item"><strong>▶ Download App</strong><span>Android & iOS</span></div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container footer-grid">
+  <div class="footer">
+    <div class="logo" style="margin-bottom:8px">
+      <div class="logo-mark" style="transform:scale(.7);transform-origin:left"></div>
+      <div class="logo-text"><strong style="font-size:16px">EXPERT</strong><span>HEALTH CARE</span></div>
+    </div>
+    <p>Expert Health Care is your trusted partner for Doctor Consultation, Surgery, Nursing Care & Lab Tests – all in one place.</p>
+  </div>
+  <div class="footer"><div class="footer-title">Quick Links</div><a href="#home">Home</a><a href="#doctors">Doctor Appointment</a><a href="#services">Surgery Care</a><a href="#services">Nursing Care</a><a href="#tests">Lab Tests</a><a href="#packages">Health Packages</a></div>
+  <div class="footer"><div class="footer-title">Company</div><a href="#about">About Us</a><a href="#">How It Works</a><a href="#">Our Partners</a><a href="#">Careers</a><a href="#">Privacy Policy</a><a href="#">Terms & Conditions</a></div>
+  <div class="footer"><div class="footer-title">Support</div><a href="#">Help Center</a><a href="#contact">Contact Us</a><a href="#">Refund Policy</a><a href="#">Cancellation Policy</a><a href="#">FAQs</a><br><div class="footer-title">Contact Us</div><a href="tel:8595790610">☎ 85957 09610</a><a href="mailto:support@experthomecare.in">✉ support@experthomecare.in</a><p>📍 Delhi, India</p><div class="social"><a href="#">f</a><a href="#">◎</a><a href="#">▶</a><a href="#">in</a></div></div>
+</div>
+<div class="container copyright">© 2024 Expert Health Care. All Rights Reserved.</div>
+</footer>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="close" onclick="closeModal()">×</button>
+    <h2 id="modalTitle">Book Service</h2>
+    <p>Enter your details and our team will contact you.</p>
+    <form onsubmit="submitBooking(event)">
+      <input type="text" placeholder="Your Name" required>
+      <input type="tel" placeholder="Phone Number" required>
+      <input type="email" placeholder="Email Address">
+      <input type="date">
+      <button class="btn btn-blue" style="width:100%;margin-top:8px">Submit Request</button>
+    </form>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+function toggleMenu(){
+  document.getElementById('navLinks').classList.toggle('open');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'));
+});
+
+function openModal(title){
+  document.getElementById('modalTitle').textContent=title;
+  document.getElementById('modal').classList.add('show');
+}
+function closeModal(){
+  document.getElementById('modal').classList.remove('show');
+}
+document.getElementById('modal').addEventListener('click',e=>{
+  if(e.target.id==='modal') closeModal();
+});
+
+function submitBooking(e){
+  e.preventDefault();
+  closeModal();
+  showToast('Request submitted! Our team will contact you.');
+  e.target.reset();
+}
+
+function showToast(message){
+  const t=document.getElementById('toast');
+  t.textContent=message;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+function scrollToTests(){
+  document.getElementById('tests').scrollIntoView({behavior:'smooth'});
+}
+
+function searchSite(e){
+  e.preventDefault();
+  const q=document.getElementById('searchInput').value.trim();
+  if(!q){showToast('Please enter something to search.');return}
+  showToast('Searching for: '+q);
+  document.getElementById('doctors').scrollIntoView({behavior:'smooth'});
+}
+</script>
 
 </body>
-
 </html>
