@@ -416,12 +416,18 @@ footer{background:#f7fafc;margin-top:0;border-top:1px solid #e4e8ec;padding:15px
     <button class="close" onclick="closeModal()">×</button>
     <h2 id="modalTitle">Book Service</h2>
     <p>Enter your details and our team will contact you.</p>
-    <form onsubmit="submitBooking(event)">
-      <input type="text" placeholder="Your Name" required>
-      <input type="tel" placeholder="Phone Number" required>
-      <input type="email" placeholder="Email Address">
-      <input type="date">
-      <button class="btn btn-blue" style="width:100%;margin-top:8px">Submit Request</button>
+    <!-- Flask backend connection -->
+    <form id="bookingForm" action="/submit" method="POST" onsubmit="submitBooking(event)">
+      <input type="hidden" id="serviceName" name="service" value="">
+
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <input type="email" name="email" placeholder="Email Address">
+      <input type="date" name="date">
+
+      <button type="submit" class="btn btn-blue" style="width:100%;margin-top:8px">
+        Submit Request
+      </button>
     </form>
   </div>
 </div>
@@ -437,6 +443,7 @@ document.querySelectorAll('.nav-links a').forEach(a=>{
 
 function openModal(title){
   document.getElementById('modalTitle').textContent=title;
+  document.getElementById('serviceName').value=title;
   document.getElementById('modal').classList.add('show');
 }
 function closeModal(){
@@ -446,11 +453,29 @@ document.getElementById('modal').addEventListener('click',e=>{
   if(e.target.id==='modal') closeModal();
 });
 
-function submitBooking(e){
+async function submitBooking(e){
   e.preventDefault();
-  closeModal();
-  showToast('Request submitted! Our team will contact you.');
-  e.target.reset();
+
+  const form = e.target;
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: formData
+    });
+
+    if (!response.ok) {
+      throw new Error("Server error");
+    }
+
+    closeModal();
+    form.reset();
+    showToast('Request submitted successfully! Our team will contact you.');
+  } catch (error) {
+    showToast('Unable to submit right now. Please try again.');
+    console.error(error);
+  }
 }
 
 function showToast(message){
